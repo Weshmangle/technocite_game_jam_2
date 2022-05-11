@@ -3,35 +3,17 @@ using UnityEngine;
 
 public class PickDeck : MonoBehaviour
 {
-    public float currentTime = 0f;
-    
     public List<Card> cards = new List<Card>();
 
-    void Start()
-    {
-    }
-
-    void Update()
-    {
-        if(currentTime > GameManager.TIME_OUT_NEXT_CARD)
-        {
-            PickCard();
-            currentTime = 0f;
-        }
-        else
-        {
-            currentTime += Time.deltaTime;   
-        }
-    }
-
-    public void PickCard()
+    public Card PickCard()
     {
         if(cards.Count > 0)
         {
             Card card = cards[0];
             cards.Remove(card);
-            Hand.Instance.AppendCard(card);
+            return card;
         }
+        return null;
     }
 
     public void AddCard(Card[] collectionCards)

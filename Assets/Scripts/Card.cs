@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    void Start()
+    public float currentTimer;
+    public float timeout;
+    
+    public void PlayCard()
     {
         
-    }
-
-    void Update()
-    {
     }
 }

@@ -4,17 +4,11 @@ using UnityEngine;
 
 public class Hand : MonoBehaviour
 {
-    public static Hand Instance;
     public Transform area;
     public static int MAX_CARDS_HAND = 5;
 
     public List<Card> cards = new List<Card>();
     public GameObject[] places;
-    
-    void Start()
-    {
-        Instance = this;
-    }
 
     void Update()
     {
@@ -30,6 +24,11 @@ public class Hand : MonoBehaviour
                 cards[index].transform.position = places[index].transform.position;
             }
         }
+    }
+
+    public bool HandIsFull()
+    {
+        return cards.Count >= MAX_CARDS_HAND;
     }
 
     public void AppendCard(Card card)

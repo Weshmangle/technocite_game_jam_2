@@ -229,7 +229,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1864811828909878098}
-  - component: {fileID: 286811753003791629}
   m_Layer: 0
   m_Name: GroundCards
   m_TagString: Untagged
@@ -258,26 +257,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &286811753003791629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4055373201873933881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19932217ceeae1544ac39188215560d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  area: {fileID: 2209606744999702732}
-  cards: []
-  places:
-  - {fileID: 4562247449660324405}
-  - {fileID: 1273011963617363769}
-  - {fileID: 5022150561187250106}
-  - {fileID: 4197767320551035687}
-  - {fileID: 775185176905378931}
 --- !u!1 &4197767320551035687
 GameObject:
   m_ObjectHideFlags: 0
