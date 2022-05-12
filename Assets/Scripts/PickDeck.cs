@@ -13,8 +13,17 @@ public class PickDeck : MonoBehaviour
             cards.Remove(card);
             return card;
         }
-        return null;
+        else
+        {
+            throw new System.Exception("Your deck is empty");
+        }
     }
+
+    public Card PickSpecificCard(PrototypeCard card)
+    {
+        throw new System.Exception("PickSpecificCard Not Implemented");
+    }
+
 
     public Card PickCardRandom()
     {
@@ -22,8 +31,10 @@ public class PickDeck : MonoBehaviour
         {
             throw new System.Exception("Your deck is empty");
         }
-
-        return cards[Random.Range(0, cards.Count)];
+        else
+        {
+            return cards[Random.Range(0, cards.Count)];
+        }
     }
 
     public void AddCard(Card[] collectionCards)
