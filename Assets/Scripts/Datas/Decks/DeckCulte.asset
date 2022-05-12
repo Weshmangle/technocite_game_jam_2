@@ -13,9 +13,23 @@ MonoBehaviour:
   m_Name: DeckCulte
   m_EditorClassIdentifier: 
   cards:
-  - {fileID: 11400000, guid: da4d77a9a6e8a18458f90815692dde7f, type: 2}
-  - {fileID: 11400000, guid: da4d77a9a6e8a18458f90815692dde7f, type: 2}
-  - {fileID: 11400000, guid: b733a62ee461df9429026b662930a854, type: 2}
-  - {fileID: 11400000, guid: b733a62ee461df9429026b662930a854, type: 2}
-  - {fileID: 11400000, guid: da4d77a9a6e8a18458f90815692dde7f, type: 2}
-  - {fileID: 11400000, guid: b733a62ee461df9429026b662930a854, type: 2}
+  - {fileID: 11400000, guid: 15d39292d0310b04c8fa0b87f64a2ab0, type: 2}
+  - {fileID: 11400000, guid: 15d39292d0310b04c8fa0b87f64a2ab0, type: 2}
+  - {fileID: 11400000, guid: 200aa1a1d912191418b277a4cc4eb09d, type: 2}
+  - {fileID: 11400000, guid: 200aa1a1d912191418b277a4cc4eb09d, type: 2}
+  - {fileID: 11400000, guid: 200aa1a1d912191418b277a4cc4eb09d, type: 2}
+  - {fileID: 11400000, guid: 094149689be74184a8cb0cd5ae8b8bd4, type: 2}
+  - {fileID: 11400000, guid: 094149689be74184a8cb0cd5ae8b8bd4, type: 2}
+  - {fileID: 11400000, guid: 55c3a7ea3407c6248a1a12875932aa25, type: 2}
+  - {fileID: 11400000, guid: 55c3a7ea3407c6248a1a12875932aa25, type: 2}
+  - {fileID: 11400000, guid: c9c59dcbce07de543a49bc1ad8250679, type: 2}
+  - {fileID: 11400000, guid: c9c59dcbce07de543a49bc1ad8250679, type: 2}
+  - {fileID: 11400000, guid: a30912080748de641bb60d96ebb93b21, type: 2}
+  - {fileID: 11400000, guid: a30912080748de641bb60d96ebb93b21, type: 2}
+  - {fileID: 11400000, guid: 4f1c3b217c455694b90a6d0e8cd14702, type: 2}
+  - {fileID: 11400000, guid: 4f1c3b217c455694b90a6d0e8cd14702, type: 2}
+  - {fileID: 11400000, guid: 431ab22f16c62b040958c90547482538, type: 2}
+  - {fileID: 11400000, guid: 2f67e11a130b0e44db5b7be5fd2c537a, type: 2}
+  - {fileID: 11400000, guid: 2f67e11a130b0e44db5b7be5fd2c537a, type: 2}
+  - {fileID: 11400000, guid: ae0e43a08ea31354cbd15af7885aef28, type: 2}
+  - {fileID: 11400000, guid: ae0e43a08ea31354cbd15af7885aef28, type: 2}
