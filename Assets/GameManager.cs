@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
     public static readonly float TIME_OUT_NEXT_CARD = 5;
     public static readonly float TIME_OUT_GAME_OVER = 5 * 60;
     public static bool GAME_IS_OVER;
@@ -16,7 +17,10 @@ public class GameManager : MonoBehaviour
     public GameObject prefabCard;
     public float currentTime = 0f;
 
-    public 
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     void Start()
     {

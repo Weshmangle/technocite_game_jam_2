@@ -5,7 +5,7 @@ public class PickDeck : MonoBehaviour
 {
     public List<Card> cards = new List<Card>();
 
-    public Card PickCard()
+    public Card PickCardOnTop()
     {
         if(cards.Count > 0)
         {
@@ -14,6 +14,16 @@ public class PickDeck : MonoBehaviour
             return card;
         }
         return null;
+    }
+
+    public Card PickCardRandom()
+    {
+        if(cards.Count == 0)
+        {
+            throw new System.Exception("Your deck is empty");
+        }
+
+        return cards[Random.Range(0, cards.Count)];
     }
 
     public void AddCard(Card[] collectionCards)

@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    public float currentTimer;
-    public float timeout;
+    public BoardPlayer boardPlayer;
     
     public void PlayCard()
     {

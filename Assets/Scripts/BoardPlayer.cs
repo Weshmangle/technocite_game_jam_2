@@ -17,14 +17,14 @@ public class BoardPlayer : MonoBehaviour
         {
             if(!hand.HandIsFull())
             {
-                Card card = deck.PickCard();
+                Card card = deck.PickCardOnTop();
                 hand.AppendCard(card);   
             }
             currentTime = 0f;
         }
         else
         {
-            currentTime += Time.deltaTime;   
+            currentTime += Time.deltaTime;
         }
         if(Input.GetMouseButtonDown(0))
         {

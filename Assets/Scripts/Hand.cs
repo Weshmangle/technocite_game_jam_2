@@ -43,4 +43,23 @@ public class Hand : MonoBehaviour
             card.transform.parent = transform;
         }
     }
+
+    public void Discard(Card card)
+    {
+        if(cards.Count == 0)
+        {
+            throw new System.Exception("Hand is empty, cant discard");
+        }
+        if(!cards.Remove(card))
+        {
+            throw new System.Exception("Cant discard card not in hand");
+        }
+    }
+
+    public Card DiscardRandom()
+    {
+        Card card = cards[Random.Range(0, cards.Count)];
+        Discard(card);
+        return card;
+    }
 }
