@@ -7,7 +7,7 @@ public class BoardPlayer : MonoBehaviour
     public PickDeck deck;
     public StarterDeck starterDeck;
     public Hand hand;
-    //public Ground ground;
+    public Ground ground;
     public float currentTime = 0f;
 
     public Card cardSelected;

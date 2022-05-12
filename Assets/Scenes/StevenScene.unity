@@ -354,6 +354,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardB
       objectReference: {fileID: 0}
+    - target: {fileID: 2740608847053508691, guid: 76e7b17a51dea2c44b62acb8630105d8, type: 3}
+      propertyPath: starterDeck
+      value: 
+      objectReference: {fileID: 11400000, guid: b5c4a78d6c7cdcf46a5c90ae660946a2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76e7b17a51dea2c44b62acb8630105d8, type: 3}
 --- !u!114 &1019469443 stripped
@@ -488,6 +492,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BoardA
       objectReference: {fileID: 0}
+    - target: {fileID: 2740608847053508691, guid: 76e7b17a51dea2c44b62acb8630105d8, type: 3}
+      propertyPath: starterDeck
+      value: 
+      objectReference: {fileID: 11400000, guid: a28fc413ceb51da499e5145da4b231bb, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76e7b17a51dea2c44b62acb8630105d8, type: 3}
 --- !u!114 &1464814765 stripped
