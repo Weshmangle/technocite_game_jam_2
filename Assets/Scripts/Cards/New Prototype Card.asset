@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: New Prototype Card
   m_EditorClassIdentifier: 
   nameCard: 
-  effects: []
+  effects:
+  - {fileID: 0}

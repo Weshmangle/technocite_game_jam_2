@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Effects/DiscardEffect")]
-public class DiscardEffect : Effect
+[CreateAssetMenu(menuName = "Effects/BuffEffect")]
+public class BuffEffect : Effect
 {
-    public bool OwnCards;
+    public float value;
+    public bool ownCards;
     
     public override void Execute(Card card)
     {
