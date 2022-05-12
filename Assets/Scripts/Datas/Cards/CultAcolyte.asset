@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameCard: Acolyte
   effects:
-  - {fileID: 11400000, guid: c889435a4dd313b41878fbe8dbb723c4, type: 2}
+  - {fileID: 11400000, guid: 57b62c12c1d749149b643403d5f26ca4, type: 2}
