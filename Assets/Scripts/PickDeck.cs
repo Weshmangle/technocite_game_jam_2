@@ -4,6 +4,8 @@ using UnityEngine;
 public class PickDeck : MonoBehaviour
 {
     public List<Card> cards = new List<Card>();
+    public CountDown countDownNextCard;
+    public CountDown countDownNextBook;
 
     public Card PickCardOnTop()
     {

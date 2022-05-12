@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public static readonly float TIME_OUT_NEXT_CARD = 5;
+    public static readonly float TIME_OUT_NEXT_BOOK = 60;
     public static readonly float TIME_OUT_GAME_OVER = 5 * 60;
     public static bool GAME_IS_OVER;
 

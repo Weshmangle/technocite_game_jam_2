@@ -19,6 +19,10 @@ public class BoardPlayer : MonoBehaviour
        {
             deck.AddCard(Card.CreateCard(card));
        }
+       deck.countDownNextCard.SetTimeOut(GameManager.TIME_OUT_NEXT_CARD);
+       deck.countDownNextCard.StartCoundtDown();
+       deck.countDownNextBook.SetTimeOut(GameManager.TIME_OUT_NEXT_BOOK);
+       deck.countDownNextBook.StartCoundtDown();
    }
     
     void Update()
@@ -31,6 +35,10 @@ public class BoardPlayer : MonoBehaviour
                 hand.AppendCard(card);   
             }
             currentTime = 0f;
+            deck.countDownNextCard.SetTimeOut(GameManager.TIME_OUT_NEXT_CARD);
+            deck.countDownNextCard.StartCoundtDown();
+            deck.countDownNextBook.SetTimeOut(GameManager.TIME_OUT_NEXT_BOOK);
+            deck.countDownNextBook.StartCoundtDown();
         }
         else
         {
