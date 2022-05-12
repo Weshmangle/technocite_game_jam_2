@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e53d9d5fb1ed4fd4d81f980fefcf985a, type: 3}
-  m_Name: CooldownA
+  m_Name: CoolDownAlcolique
   m_EditorClassIdentifier: 
-  effects: []
-  cooldownValue: 20
+  effects:
+  - {fileID: 11400000, guid: 57b62c12c1d749149b643403d5f26ca4, type: 2}
+  cooldownValue: 15
   currentTime: 0

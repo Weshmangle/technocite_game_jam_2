@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2fa252a36f52148a5706c10aa39772, type: 3}
   m_Name: DeckMiskatonic
   m_EditorClassIdentifier: 
-  cards: []
+  cards:
+  - {fileID: 11400000, guid: b733a62ee461df9429026b662930a854, type: 2}
+  - {fileID: 11400000, guid: b733a62ee461df9429026b662930a854, type: 2}
+  - {fileID: 11400000, guid: da4d77a9a6e8a18458f90815692dde7f, type: 2}
+  - {fileID: 11400000, guid: b733a62ee461df9429026b662930a854, type: 2}
+  - {fileID: 11400000, guid: da4d77a9a6e8a18458f90815692dde7f, type: 2}
+  - {fileID: 11400000, guid: da4d77a9a6e8a18458f90815692dde7f, type: 2}
