@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 public class BoardPlayer : MonoBehaviour
 {
@@ -32,7 +33,7 @@ public class BoardPlayer : MonoBehaviour
             if(!hand.HandIsFull())
             {
                 Card card = deck.PickCardOnTop();
-                hand.AppendCard(card);   
+                hand.AppendCard(card);
             }
             currentTime = 0f;
             deck.countDownNextCard.SetTimeOut(GameManager.TIME_OUT_NEXT_CARD);
@@ -66,5 +67,11 @@ public class BoardPlayer : MonoBehaviour
                 }
             }
         }
+    }
+
+    internal void PickCard()
+    {
+        Card card = deck.PickCardOnTop();
+        hand.AppendCard(card);
     }
 }

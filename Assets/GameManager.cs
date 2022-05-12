@@ -8,7 +8,9 @@ public class GameManager : MonoBehaviour
     public static readonly float TIME_OUT_NEXT_CARD = 5;
     public static readonly float TIME_OUT_NEXT_BOOK = 60;
     public static readonly float TIME_OUT_GAME_OVER = 5 * 60;
-    public static bool GAME_IS_OVER;
+    public static readonly float NUMBER_CARD_START = 3;
+    public bool gameOver;
+    public BoardPlayer winner;
 
     [SerializeField] public BoardPlayer boardPlayerA;
     [SerializeField] public BoardPlayer boardPlayerB;
@@ -25,7 +27,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        FillDeck();
+        StarterPickCard();
     }
 
     void Update()
@@ -36,20 +38,25 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            GAME_IS_OVER = true;
+            gameOver = true;
+            winner = boardPlayerA;
         }
     }
 
-    public void FillDeck()
+    public void StarterPickCard()
     {
+        for (var i = 0; i < NUMBER_CARD_START; i++)
+        {
+            boardPlayerA.PickCard();
+            boardPlayerB.PickCard();
+        }
     }
 
-    public int PlayerWinner()
+    public BoardPlayer PlayerWinner()
     {
-        if(GAME_IS_OVER)
+        if(gameOver)
         {
-            return 0;
-            //return player;
+            return winner;
         }
         else
         {

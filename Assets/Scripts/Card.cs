@@ -10,7 +10,10 @@ public class Card : MonoBehaviour
 
     public void PlayCard()
     {
-        
+        foreach (var effect in prottotypeCard.effects)
+        {
+            effect.Execute(this);
+        }
     }
 
     public void SetPrototype(PrototypeCard proto)
