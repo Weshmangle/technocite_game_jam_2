@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class BoardPlayer : MonoBehaviour
 {
@@ -11,6 +12,14 @@ public class BoardPlayer : MonoBehaviour
     public float currentTime = 0f;
 
     public Card cardSelected;
+
+   void Start()
+   {
+       foreach (var card in starterDeck.cards)
+       {
+            deck.AddCard(Card.CreateCard(card));
+       }
+   }
     
     void Update()
     {

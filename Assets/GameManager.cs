@@ -24,7 +24,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        FakeInitDeck();
         FillDeck();
     }
 
@@ -40,19 +39,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void FakeInitDeck()
-    {
-        for (int i = 0; i < 20; i++)
-        {
-            deckA.Add(Instantiate(prefabCard).GetComponent<Card>());
-            deckB.Add(Instantiate(prefabCard).GetComponent<Card>());
-        }
-    }
-
     public void FillDeck()
     {
-        boardPlayerA.deck.AddCard(deckA.ToArray());
-        boardPlayerB.deck.AddCard(deckB.ToArray());
     }
 
     public int PlayerWinner()
