@@ -7,6 +7,7 @@ public class Card : MonoBehaviour
     public BoardPlayer boardPlayer;
     public PrototypeCard prottotypeCard;
     public SpriteRenderer spriteFront;
+    public CountDown countDown;
 
     public void PlayCard()
     {
@@ -20,6 +21,13 @@ public class Card : MonoBehaviour
     {
         prottotypeCard = proto;
         spriteFront.sprite = proto.sprite;
+    }
+
+    public void StartTimer(float startTime)
+    {
+        countDown.enabled = true;
+        countDown.SetTimeOut(startTime);
+        countDown.StartCoundtDown();
     }
 
     public static Card CreateCard(PrototypeCard proto)

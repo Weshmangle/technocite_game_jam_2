@@ -52,12 +52,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public int PlayerWinner()
+    public BoardPlayer GetBoardOpponent(Card card)
+    {
+        if(card.boardPlayer.Faction == boardPlayerA.Faction)
+        {
+            return boardPlayerB;
+        }
+        else
+        {
+            return boardPlayerA;
+        }
+    }
+
+    public BoardPlayer PlayerWinner() 
     {
         if(GAME_IS_OVER)
         {
-            return 0;
-            //return player;
+            return boardPlayerA;
         }
         else
         {

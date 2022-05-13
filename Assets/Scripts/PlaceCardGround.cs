@@ -5,5 +5,6 @@ using UnityEngine;
 public class PlaceCardGround : MonoBehaviour
 {
     public BoardPlayer board;
+    public Card card;
     public int index;
 }

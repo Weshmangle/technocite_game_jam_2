@@ -13,15 +13,18 @@ public class BoardPlayer : MonoBehaviour
     public float currentTime = 0f;
 
     public Card cardSelected;
+    public string Faction;
 
    void Start()
    {
-       foreach (var protoCard in starterDeck.cards)
-       {
-            Card card = Card.CreateCard(protoCard);
-            card.boardPlayer = this;
-            deck.AddCard(card);
-       }
+        foreach (var protoCard in starterDeck.cards)
+        {
+                Card card = Card.CreateCard(protoCard);
+                card.boardPlayer = this;
+                deck.AddCard(card);
+        }
+       
+        Faction = starterDeck.name;
 
         for (int index = 0; index < ground.places.Length; index++)
         {
@@ -89,8 +92,8 @@ public class BoardPlayer : MonoBehaviour
                         {                 
                             if(placeCardGround.board.name == name && cardSelected)
                             {
-                                hand.cards.Remove(cardSelected);
-                                ground.AppendCard(placeCardGround.index, cardSelected);
+                                PlaydCard(placeCardGround);
+                                cardSelected.PlayCard();
                                 cardSelected = null;
                             }   
                         }
@@ -98,6 +101,12 @@ public class BoardPlayer : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void PlaydCard(PlaceCardGround place)
+    {
+        hand.cards.Remove(cardSelected);
+        ground.AppendCard(place.index, cardSelected);
     }
 
     public void PickCard()

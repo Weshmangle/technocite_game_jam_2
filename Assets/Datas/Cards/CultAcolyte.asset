@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: CultAcolyte
   m_EditorClassIdentifier: 
   nameCard: Acolyte
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: ced1aa39915d5e842bb2ad2e3274dbab, type: 3}
   effects:
   - {fileID: 11400000, guid: 8851f6edc7bfa0b4ebbbdc9eed5913c6, type: 2}
