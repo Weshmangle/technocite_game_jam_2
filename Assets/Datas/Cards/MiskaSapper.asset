@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: MiskaSapper
   m_EditorClassIdentifier: 
   nameCard: Deranged Sapper
-  sprite: {fileID: 21300000, guid: 01581b164188bd54092a5003fb0659e5, type: 3}
+  typeCard: 0
+  sprite: {fileID: 21300000, guid: 6c406f7403c3d074798ebd17f6acc36f, type: 3}
   effects:
   - {fileID: 11400000, guid: 0dd3860879877be4dba1b37099d8904d, type: 2}

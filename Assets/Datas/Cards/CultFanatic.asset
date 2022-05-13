@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: CultFanatic
   m_EditorClassIdentifier: 
   nameCard: Fanatic
-  sprite: {fileID: 21300000, guid: f81bc7eb2b9a2bd4abf962dd3f4a3c7b, type: 3}
+  typeCard: 0
+  sprite: {fileID: 21300000, guid: 1ac5d3e74ba809445a8007ac4bfffcbc, type: 3}
   effects:
   - {fileID: 11400000, guid: 2f63d8f3dbb34ab4cad1b4a129a9bc75, type: 2}
