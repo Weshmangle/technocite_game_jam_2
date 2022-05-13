@@ -7,6 +7,7 @@ public class BuffEffect : Effect
 {
     public float value;
     public bool ownCards;
+    public TypeBuff type;
     
     public override void Execute(Card card)
     {

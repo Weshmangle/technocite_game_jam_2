@@ -5,12 +5,13 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public static readonly float TIME_OUT_NEXT_CARD = 5;
-    public static readonly float TIME_OUT_NEXT_BOOK = 60;
-    public static readonly float TIME_OUT_GAME_OVER = 5 * 60;
+
+    public static readonly float DEBUG_FACTOR = .1f;
+    public static readonly float TIME_OUT_NEXT_CARD = 20 * DEBUG_FACTOR;
+    public static readonly float TIME_OUT_NEXT_BOOK = 60 * DEBUG_FACTOR;
+    public static readonly float TIME_OUT_GAME_OVER = 5 * 60 * DEBUG_FACTOR;
     public static readonly float NUMBER_CARD_START = 3;
-    public bool gameOver;
-    public BoardPlayer winner;
+    public static bool GAME_IS_OVER;
 
     [SerializeField] public BoardPlayer boardPlayerA;
     [SerializeField] public BoardPlayer boardPlayerB;
@@ -38,8 +39,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            gameOver = true;
-            winner = boardPlayerA;
+            GAME_IS_OVER = true;
         }
     }
 
@@ -52,11 +52,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public BoardPlayer PlayerWinner()
+    public int PlayerWinner()
     {
-        if(gameOver)
+        if(GAME_IS_OVER)
         {
-            return winner;
+            return 0;
+            //return player;
         }
         else
         {
