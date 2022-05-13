@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b3f98928250a6041adb1a5dba2c543c, type: 3}
-  m_Name: PlaceholderAstrologist
+  m_Name: RelicBrain
   m_EditorClassIdentifier: 
-  nameCard: Mad Astrologist
+  nameCard: Brain in a Jar
   sprite: {fileID: 0}
   effects:
+  - {fileID: 11400000, guid: 849e161e8a1624b4a895eff99a3632f4, type: 2}
   - {fileID: 11400000, guid: fb1fae791e2535c458b8072b802e36c4, type: 2}

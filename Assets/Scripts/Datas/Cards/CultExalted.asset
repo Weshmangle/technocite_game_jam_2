@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b3f98928250a6041adb1a5dba2c543c, type: 3}
-  m_Name: PlaceholderBrain
+  m_Name: CultExalted
   m_EditorClassIdentifier: 
-  nameCard: Brain in a Jar
+  nameCard: Exalted
+  sprite: {fileID: 0}
   effects:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: bf3718d90ee9590439182b498996023c, type: 2}

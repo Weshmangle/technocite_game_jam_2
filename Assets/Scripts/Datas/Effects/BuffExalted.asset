@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b3f98928250a6041adb1a5dba2c543c, type: 3}
-  m_Name: PlaceholderSapper
+  m_Script: {fileID: 11500000, guid: 5c2b09cfa5cc80f4fa94196fa73af7bb, type: 3}
+  m_Name: BuffExalted
   m_EditorClassIdentifier: 
-  nameCard: Deranged Sapper
-  effects:
-  - {fileID: 0}
+  value: 20
+  ownCards: 1

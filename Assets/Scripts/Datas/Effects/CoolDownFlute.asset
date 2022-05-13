@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b3f98928250a6041adb1a5dba2c543c, type: 3}
-  m_Name: PlaceholderExalted
+  m_Script: {fileID: 11500000, guid: e53d9d5fb1ed4fd4d81f980fefcf985a, type: 3}
+  m_Name: CoolDownFlute
   m_EditorClassIdentifier: 
-  nameCard: Exalted
-  effects:
-  - {fileID: 0}
+  effects: []
+  cooldownValue: 10
+  currentTime: 0
