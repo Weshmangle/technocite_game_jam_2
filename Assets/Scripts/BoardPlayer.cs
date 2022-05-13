@@ -1,16 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using System;
 
 public class BoardPlayer : MonoBehaviour
 {
     public PickDeck deck;
     public StarterDeck starterDeck;
     public Hand hand;
-    //public Ground ground;
+    public Ground ground;
     public float currentTime = 0f;
 
     public Card cardSelected;
+
+   void Start()
+   {
+       foreach (var card in starterDeck.cards)
+       {
+            deck.AddCard(Card.CreateCard(card));
+       }
+       deck.countDownNextCard.SetTimeOut(GameManager.TIME_OUT_NEXT_CARD);
+       deck.countDownNextCard.StartCoundtDown();
+       deck.countDownNextBook.SetTimeOut(GameManager.TIME_OUT_NEXT_BOOK);
+       deck.countDownNextBook.StartCoundtDown();
+   }
     
     void Update()
     {
@@ -19,9 +33,13 @@ public class BoardPlayer : MonoBehaviour
             if(!hand.HandIsFull())
             {
                 Card card = deck.PickCardOnTop();
-                hand.AppendCard(card);   
+                hand.AppendCard(card);
             }
             currentTime = 0f;
+            deck.countDownNextCard.SetTimeOut(GameManager.TIME_OUT_NEXT_CARD);
+            deck.countDownNextCard.StartCoundtDown();
+            deck.countDownNextBook.SetTimeOut(GameManager.TIME_OUT_NEXT_BOOK);
+            deck.countDownNextBook.StartCoundtDown();
         }
         else
         {
@@ -49,5 +67,11 @@ public class BoardPlayer : MonoBehaviour
                 }
             }
         }
+    }
+
+    internal void PickCard()
+    {
+        Card card = deck.PickCardOnTop();
+        hand.AppendCard(card);
     }
 }

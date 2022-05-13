@@ -6,8 +6,11 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public static readonly float TIME_OUT_NEXT_CARD = 5;
+    public static readonly float TIME_OUT_NEXT_BOOK = 60;
     public static readonly float TIME_OUT_GAME_OVER = 5 * 60;
-    public static bool GAME_IS_OVER;
+    public static readonly float NUMBER_CARD_START = 3;
+    public bool gameOver;
+    public BoardPlayer winner;
 
     [SerializeField] public BoardPlayer boardPlayerA;
     [SerializeField] public BoardPlayer boardPlayerB;
@@ -24,8 +27,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        FakeInitDeck();
-        FillDeck();
+        StarterPickCard();
     }
 
     void Update()
@@ -36,31 +38,25 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            GAME_IS_OVER = true;
+            gameOver = true;
+            winner = boardPlayerA;
         }
     }
 
-    public void FakeInitDeck()
+    public void StarterPickCard()
     {
-        for (int i = 0; i < 20; i++)
+        for (var i = 0; i < NUMBER_CARD_START; i++)
         {
-            deckA.Add(Instantiate(prefabCard).GetComponent<Card>());
-            deckB.Add(Instantiate(prefabCard).GetComponent<Card>());
+            boardPlayerA.PickCard();
+            boardPlayerB.PickCard();
         }
     }
 
-    public void FillDeck()
+    public BoardPlayer PlayerWinner()
     {
-        boardPlayerA.deck.AddCard(deckA.ToArray());
-        boardPlayerB.deck.AddCard(deckB.ToArray());
-    }
-
-    public int PlayerWinner()
-    {
-        if(GAME_IS_OVER)
+        if(gameOver)
         {
-            return 0;
-            //return player;
+            return winner;
         }
         else
         {
