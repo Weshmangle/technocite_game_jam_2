@@ -16,10 +16,20 @@ public class BoardPlayer : MonoBehaviour
 
    void Start()
    {
-       foreach (var card in starterDeck.cards)
+       foreach (var protoCard in starterDeck.cards)
        {
-            deck.AddCard(Card.CreateCard(card));
+            Card card = Card.CreateCard(protoCard);
+            card.boardPlayer = this;
+            deck.AddCard(card);
        }
+
+        for (int index = 0; index < ground.places.Length; index++)
+        {
+            PlaceCardGround placeCardGround = ground.places[index];
+            placeCardGround.board = this;
+            placeCardGround.index = index;
+        }
+
        deck.countDownNextCard.SetTimeOut(GameManager.TIME_OUT_NEXT_CARD);
        deck.countDownNextCard.StartCoundtDown();
        deck.countDownNextBook.SetTimeOut(GameManager.TIME_OUT_NEXT_BOOK);
@@ -30,7 +40,7 @@ public class BoardPlayer : MonoBehaviour
     {
         if(currentTime > GameManager.TIME_OUT_NEXT_CARD)
         {
-            if(!hand.HandIsFull())
+            if(!hand.HandIsFull() && !deck.isEmpty())
             {
                 Card card = deck.PickCardOnTop();
                 hand.AppendCard(card);
@@ -57,19 +67,40 @@ public class BoardPlayer : MonoBehaviour
 
                     if(card)
                     {
-                        if(cardSelected)
+                        if(card.boardPlayer.name == name)
                         {
-                            cardSelected.transform.localScale = Vector3.one;
+                            if(cardSelected)
+                            {
+                                cardSelected.transform.localScale = Vector3.one;
+                                cardSelected = null;
+                            }
+                            else
+                            {
+                                cardSelected = card;
+                                cardSelected.transform.localScale *= 1.1f;
+                            }   
                         }
-                        cardSelected = card;
-                        cardSelected.transform.localScale *= 1.1f;
+                    }
+                    else
+                    {
+                        PlaceCardGround placeCardGround = raycastHit.transform.gameObject.GetComponent<PlaceCardGround>();
+                        
+                        if(placeCardGround)
+                        {                 
+                            if(placeCardGround.board.name == name && cardSelected)
+                            {
+                                hand.cards.Remove(cardSelected);
+                                ground.AppendCard(placeCardGround.index, cardSelected);
+                                cardSelected = null;
+                            }   
+                        }
                     }
                 }
             }
         }
     }
 
-    internal void PickCard()
+    public void PickCard()
     {
         Card card = deck.PickCardOnTop();
         hand.AppendCard(card);

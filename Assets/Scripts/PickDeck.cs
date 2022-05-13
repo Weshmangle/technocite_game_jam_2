@@ -4,8 +4,9 @@ using UnityEngine;
 public class PickDeck : MonoBehaviour
 {
     public List<Card> cards = new List<Card>();
-    public CountDown countDownNextCard;
-    public CountDown countDownNextBook;
+    [SerializeField] public CountDown countDownNextCard;
+    [SerializeField] public CountDown countDownNextBook;
+    [SerializeField] public GameObject empty;
 
     public Card PickCardOnTop()
     {
@@ -19,6 +20,11 @@ public class PickDeck : MonoBehaviour
         {
             throw new System.Exception("Your deck is empty");
         }
+    }
+
+    void Update()
+    {
+        empty.active = cards.Count == 0;
     }
 
     public Card PickSpecificCard(PrototypeCard card)
@@ -52,5 +58,10 @@ public class PickDeck : MonoBehaviour
         {
             AddCard(card);
         }
+    }
+
+    public bool isEmpty()
+    {
+        return cards.Count == 0;
     }
 }

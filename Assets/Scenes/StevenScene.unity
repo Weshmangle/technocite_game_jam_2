@@ -312,7 +312,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2740608847053508688, guid: 76e7b17a51dea2c44b62acb8630105d8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.12
+      value: 0.96
       objectReference: {fileID: 0}
     - target: {fileID: 2740608847053508688, guid: 76e7b17a51dea2c44b62acb8630105d8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -482,7 +482,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2740608847053508688, guid: 76e7b17a51dea2c44b62acb8630105d8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.11
       objectReference: {fileID: 0}
     - target: {fileID: 2740608847053508688, guid: 76e7b17a51dea2c44b62acb8630105d8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -590,6 +590,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ef7474b2178b7642ad10147e3fa7e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOver: 0
+  winner: {fileID: 0}
   boardPlayerA: {fileID: 1464814765}
   boardPlayerB: {fileID: 1019469443}
   deckA: []
