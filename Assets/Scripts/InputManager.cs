@@ -32,6 +32,8 @@ public class InputManager : MonoBehaviour
     {
         var position = touchControls.Touch.TouchPosition.ReadValue<Vector2>();
         
+        Debug.Log("end toch " + position.x + ", " + position.y);
+        
         if(position.y > Screen.height)
         {
             //GameManager.Instance;
