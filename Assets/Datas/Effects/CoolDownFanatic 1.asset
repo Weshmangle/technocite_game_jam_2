@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: CoolDownFanatic 1
   m_EditorClassIdentifier: 
   effects:
-  - {fileID: 11400000, guid: 57b62c12c1d749149b643403d5f26ca4, type: 2}
-  - {fileID: 11400000, guid: 317674d8fed329d4291151ac55581516, type: 2}
-  cooldownValue: 10
+  - {fileID: 11400000, guid: fb1fae791e2535c458b8072b802e36c4, type: 2}
+  cooldownValue: 15
   currentTime: 0
