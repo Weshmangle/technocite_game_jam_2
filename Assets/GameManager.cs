@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public List<Card> deckB = new List<Card>();
     public GameObject prefabCard;
     public float currentTime = 0f;
+    public CountDown globalCountDown;
 
     private void Awake()
     {
@@ -29,6 +30,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         StarterPickCard();
+        globalCountDown.SetTimeOut(TIME_OUT_GAME_OVER);
+        globalCountDown.StartCoundtDown();
     }
 
     void Update()

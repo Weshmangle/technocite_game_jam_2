@@ -25,7 +25,7 @@ public class Card : MonoBehaviour
 
     public void StartTimer(float startTime)
     {
-        countDown.enabled = true;
+        countDown.gameObject.SetActive(true);
         countDown.SetTimeOut(startTime);
         countDown.StartCoundtDown();
     }

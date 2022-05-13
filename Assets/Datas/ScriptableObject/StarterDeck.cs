@@ -4,5 +4,5 @@ using UnityEngine;
 public class StarterDeck : ScriptableObject
 {
     public PrototypeCard[] cards;
-    public string nameDeck;
+    public string faction;
 }

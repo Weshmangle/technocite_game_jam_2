@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Cards/Card")]
+[CreateAssetMenu(menuName = "Effects/Effect")]
 public class Effect : ScriptableObject
 {
     public virtual void Execute(Card card)
