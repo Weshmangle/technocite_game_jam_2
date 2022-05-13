@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public static readonly float DEBUG_FACTOR = .1f;
+    public static readonly float DEBUG_FACTOR = 1f;
     public static readonly float TIME_OUT_NEXT_CARD = 20 * DEBUG_FACTOR;
     public static readonly float TIME_OUT_NEXT_BOOK = 60 * DEBUG_FACTOR;
     public static readonly float TIME_OUT_GAME_OVER = 5 * 60 * DEBUG_FACTOR;
@@ -52,6 +53,7 @@ public class GameManager : MonoBehaviour
             winner = boardPlayerA;
             textWin.text = $"{winner.Faction} / 10";
             panelGameOver.gameObject.SetActive(true);
+            Invoke(nameof(ReloadGame), 5f);
         }
         
         if(boardPlayerB.countRelic == RELIC_COUNT_VICTORY)
@@ -60,7 +62,13 @@ public class GameManager : MonoBehaviour
             winner = boardPlayerB;
             textWin.text = $"{winner.Faction} / 10";
             panelGameOver.gameObject.SetActive(true);
+            Invoke(nameof(ReloadGame), 5f);
         }
+    }
+
+    public void ReloadGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void StarterPickCard()
