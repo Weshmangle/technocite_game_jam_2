@@ -10,17 +10,22 @@ public class CoolDownEffect : Effect
     public float cooldownValue;
     
     public float currentTime = 0f;
-
-    public CountDown countDown;
     
-    public override async void Execute(Card card)
+    public override void Execute(Card card)
     {
-        card.StartCoroutine(nameof(timeout), 10);
-        card.StartTimer(cooldownValue);
+        var cooldown = cooldownValue * GameManager.DEBUG_FACTOR;
+        card.StartCoroutine(Timeout(cooldown, card));
+        card.StartTimer(cooldown);
     }
 
-    public IEnumerator timeout(float time)
+    public IEnumerator Timeout(float time, Card card)
     {
         yield return new WaitForSeconds(time);
+
+        foreach (var effect in effects)
+        {
+            effect.Execute(card);
+        }
+        Execute(card);
     }
 }

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PlaceholderLamp
   m_EditorClassIdentifier: 
   nameCard: Lamp of Alhazred
+  typeCard: 0
   sprite: {fileID: 21300000, guid: 3b2338eff8735d34485ce62f043d9162, type: 3}
-  effects:
-  - {fileID: 11400000, guid: 338b36b1a4629434c9ca0e21ff0365f2, type: 2}
+  effects: []
