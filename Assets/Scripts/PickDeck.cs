@@ -4,6 +4,8 @@ using UnityEngine;
 public class PickDeck : MonoBehaviour
 {
     public List<Card> cards = new List<Card>();
+    public CountDown countDownNextCard;
+    public CountDown countDownNextBook;
 
     public Card PickCardOnTop()
     {
@@ -37,13 +39,18 @@ public class PickDeck : MonoBehaviour
         }
     }
 
-    public void AddCard(Card[] collectionCards)
+    public void AddCard(Card card)
+    {
+        cards.Add(card);
+        card.transform.parent = transform;
+        card.transform.localPosition = Vector3.zero;
+    }
+
+    public void AddCards(Card[] collectionCards)
     {
         foreach (var card in collectionCards)
         {
-            cards.Add(card);
-            card.transform.parent = transform;
-            card.transform.localPosition = Vector3.zero;
+            AddCard(card);
         }
     }
 }

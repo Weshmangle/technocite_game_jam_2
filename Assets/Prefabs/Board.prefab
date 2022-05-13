@@ -47,7 +47,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deck: {fileID: 2535605061156333517}
+  starterDeck: {fileID: 0}
   hand: {fileID: 2734367755871747356}
+  ground: {fileID: 0}
+  currentTime: 0
+  cardSelected: {fileID: 0}
 --- !u!1001 &2740608845917636625
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -204,23 +208,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3601320148822031593, guid: 0d37c8d6f3eae0242a9884b6f094e524, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.9
+      value: -1.34
       objectReference: {fileID: 0}
     - target: {fileID: 3601320148822031593, guid: 0d37c8d6f3eae0242a9884b6f094e524, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3601320148822031593, guid: 0d37c8d6f3eae0242a9884b6f094e524, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3601320148822031593, guid: 0d37c8d6f3eae0242a9884b6f094e524, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3601320148822031593, guid: 0d37c8d6f3eae0242a9884b6f094e524, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3601320148822031593, guid: 0d37c8d6f3eae0242a9884b6f094e524, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
