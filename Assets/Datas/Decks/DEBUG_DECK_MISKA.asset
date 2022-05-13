@@ -10,11 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c2fa252a36f52148a5706c10aa39772, type: 3}
-  m_Name: DeckMiskatonic
+  m_Name: DEBUG_DECK_MISKA
   m_EditorClassIdentifier: 
   cards:
+  - {fileID: 11400000, guid: 21e80651f9b38514a9cb9d9d4733ad5d, type: 2}
   - {fileID: 11400000, guid: b0f3b1c3abe18f2479050ded1b536b98, type: 2}
+  - {fileID: 11400000, guid: 21e80651f9b38514a9cb9d9d4733ad5d, type: 2}
   - {fileID: 11400000, guid: b0f3b1c3abe18f2479050ded1b536b98, type: 2}
+  - {fileID: 11400000, guid: 07e19120ca409b641b69818bc5d31c1b, type: 2}
   - {fileID: 11400000, guid: 9cc9c8c367bef4a4c8d7a3159ecf6c25, type: 2}
   - {fileID: 11400000, guid: 9cc9c8c367bef4a4c8d7a3159ecf6c25, type: 2}
   - {fileID: 11400000, guid: 147ded1e9c5396d4fa2cde6a2a49893f, type: 2}
@@ -25,12 +28,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 86f352dbe7693f240946bcc53bc65fdd, type: 2}
   - {fileID: 11400000, guid: 21e80651f9b38514a9cb9d9d4733ad5d, type: 2}
   - {fileID: 11400000, guid: 21e80651f9b38514a9cb9d9d4733ad5d, type: 2}
-  - {fileID: 11400000, guid: 21e80651f9b38514a9cb9d9d4733ad5d, type: 2}
-  - {fileID: 11400000, guid: 21e80651f9b38514a9cb9d9d4733ad5d, type: 2}
-  - {fileID: 11400000, guid: 07e19120ca409b641b69818bc5d31c1b, type: 2}
-  - {fileID: 11400000, guid: 07e19120ca409b641b69818bc5d31c1b, type: 2}
   - {fileID: 11400000, guid: 07e19120ca409b641b69818bc5d31c1b, type: 2}
   - {fileID: 11400000, guid: 07e19120ca409b641b69818bc5d31c1b, type: 2}
   - {fileID: 11400000, guid: 1644f60223d7b9e44885f540f2fddd97, type: 2}
   - {fileID: 11400000, guid: 1644f60223d7b9e44885f540f2fddd97, type: 2}
-  nameDeck: Catholic
+  - {fileID: 11400000, guid: 07e19120ca409b641b69818bc5d31c1b, type: 2}
+  faction: 

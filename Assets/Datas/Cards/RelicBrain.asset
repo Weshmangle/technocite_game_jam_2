@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: RelicBrain
   m_EditorClassIdentifier: 
   nameCard: Brain in a Jar
+  typeCard: 1
   sprite: {fileID: 21300000, guid: 19dc681738ebf7941a54007e826e57b4, type: 3}
   effects:
   - {fileID: 11400000, guid: 849e161e8a1624b4a895eff99a3632f4, type: 2}

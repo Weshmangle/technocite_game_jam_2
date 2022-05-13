@@ -21,9 +21,37 @@ public class Ground : MonoBehaviour
             cards.Add(card);
             card.transform.parent = places[index].transform;
             card.transform.position = places[index].transform.position;
+            places[index].card = card;
             Vector3 position = card.transform.position;
             position.y = .2f;
             card.transform.position = position;
         }
     }
+
+    public Card DestroyCard(int index)
+    {
+        Card card = places[index].card;
+
+        if(cards.Remove(card))
+        {
+            throw new System.Exception("Card cant remove from hand");
+        }
+
+        places[index].card = null;
+        Destroy(card.gameObject);
+        
+        return card;
+    }
+
+    public int GetIndexFromCard(Card card)
+    {
+        foreach (var place in places)
+        {
+            if(place.card == card)
+            {
+                return place.index;
+            }
+        }
+        return -1;
+    } 
 }

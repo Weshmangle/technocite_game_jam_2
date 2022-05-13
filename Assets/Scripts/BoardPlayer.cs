@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
-using System;
+using UnityEngine.UI;
 
 public class BoardPlayer : MonoBehaviour
 {
@@ -13,15 +10,21 @@ public class BoardPlayer : MonoBehaviour
     public float currentTime = 0f;
 
     public Card cardSelected;
+    public string Faction;
+    public GameObject canvasTextRelic;
+    public Text textRelic;
+    public int countRelic;
 
    void Start()
    {
-       foreach (var protoCard in starterDeck.cards)
-       {
-            Card card = Card.CreateCard(protoCard);
-            card.boardPlayer = this;
-            deck.AddCard(card);
-       }
+        foreach (var protoCard in starterDeck.cards)
+        {
+                Card card = Card.CreateCard(protoCard);
+                card.boardPlayer = this;
+                deck.AddCard(card);
+        }
+       
+        Faction = starterDeck.name;
 
         for (int index = 0; index < ground.places.Length; index++)
         {
@@ -29,11 +32,11 @@ public class BoardPlayer : MonoBehaviour
             placeCardGround.board = this;
             placeCardGround.index = index;
         }
-
-       deck.countDownNextCard.SetTimeOut(GameManager.TIME_OUT_NEXT_CARD);
-       deck.countDownNextCard.StartCoundtDown();
-       deck.countDownNextBook.SetTimeOut(GameManager.TIME_OUT_NEXT_BOOK);
-       deck.countDownNextBook.StartCoundtDown();
+        
+        deck.countDownNextCard.SetTimeOut(GameManager.TIME_OUT_NEXT_CARD);
+        deck.countDownNextCard.StartCoundtDown();
+        deck.countDownNextBook.SetTimeOut(GameManager.TIME_OUT_NEXT_BOOK);
+        deck.countDownNextBook.StartCoundtDown();
    }
     
     void Update()
@@ -64,7 +67,7 @@ public class BoardPlayer : MonoBehaviour
                 if(raycastHit.transform != null)
                 {
                     Card card = raycastHit.transform.gameObject.GetComponent<Card>();
-
+                    
                     if(card)
                     {
                         if(card.boardPlayer.name == name)
@@ -78,6 +81,11 @@ public class BoardPlayer : MonoBehaviour
                             {
                                 cardSelected = card;
                                 cardSelected.transform.localScale *= 1.1f;
+                                
+                                if(card.prottotypeCard.typeCard == TypeCard.RELIC)
+                                {
+                                    PlayRelicSelected();
+                                }
                             }   
                         }
                     }
@@ -89,8 +97,8 @@ public class BoardPlayer : MonoBehaviour
                         {                 
                             if(placeCardGround.board.name == name && cardSelected)
                             {
-                                hand.cards.Remove(cardSelected);
-                                ground.AppendCard(placeCardGround.index, cardSelected);
+                                PlaydCardSelected(placeCardGround);
+                                cardSelected.PlayCard();
                                 cardSelected = null;
                             }   
                         }
@@ -98,6 +106,21 @@ public class BoardPlayer : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void PlaydCardSelected(PlaceCardGround place)
+    {
+        hand.cards.Remove(cardSelected);
+        ground.AppendCard(place.index, cardSelected);
+    }
+
+    public void PlayRelicSelected()
+    {
+        hand.cards.Remove(cardSelected);
+        countRelic++;
+        textRelic.text = $" {countRelic} / 10";
+        Destroy(cardSelected.gameObject);
+        cardSelected = null;
     }
 
     public void PickCard()
