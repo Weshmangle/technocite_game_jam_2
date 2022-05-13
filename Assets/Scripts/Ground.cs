@@ -9,6 +9,7 @@ public class Ground : MonoBehaviour
     public static int MAX_CARDS_HAND = 5;
     public List<Card> cards = new List<Card>();
     public PlaceCardGround[] places;
+    public BoardPlayer boardPlayer;
 
     public void AppendCard(int index, Card card)
     {
@@ -31,10 +32,10 @@ public class Ground : MonoBehaviour
     public Card DestroyCard(int index)
     {
         Card card = places[index].card;
-
-        if(cards.Remove(card))
+        
+        if(!cards.Remove(card))
         {
-            throw new System.Exception("Card cant remove from hand");
+            throw new System.Exception("Card cant remove from Ground");
         }
 
         places[index].card = null;

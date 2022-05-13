@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PlaceholderPsychiatrist
   m_EditorClassIdentifier: 
   nameCard: Skilled Psychiatrist
+  typeCard: 0
   sprite: {fileID: 21300000, guid: 260bf49dc8bcc4c4c90cc54ea28eaa39, type: 3}
-  effects:
-  - {fileID: 0}
+  effects: []

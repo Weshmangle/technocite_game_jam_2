@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PlaceholderExorcist
   m_EditorClassIdentifier: 
   nameCard: Village Exorcist
+  typeCard: 0
   sprite: {fileID: 21300000, guid: 45227daec0ed16b4f816cc4a211ae402, type: 3}
-  effects:
-  - {fileID: 0}
+  effects: []

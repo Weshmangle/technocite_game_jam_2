@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e53d9d5fb1ed4fd4d81f980fefcf985a, type: 3}
+  m_Script: {fileID: 11500000, guid: ab333632e7db27f4996741bbc596c473, type: 3}
   m_Name: AutoDestroy
   m_EditorClassIdentifier: 
-  effects: []
-  cooldownValue: 0
-  currentTime: 0
