@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameCard: Village Exorcist
   typeCard: 0
-  sprite: {fileID: 21300000, guid: 45227daec0ed16b4f816cc4a211ae402, type: 3}
-  effects: []
+  sprite: {fileID: 21300000, guid: f3c0e5df4e1254548b6be61d86663340, type: 3}
+  effects:
+  - {fileID: 11400000, guid: 257c9d221798ad14ca4d154b5544a6af, type: 2}
