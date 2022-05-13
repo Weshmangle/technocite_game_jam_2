@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a88ccae60bb735646b4c4c1ad7d186ce, type: 3}
-  m_Name: DiscardOwn
+  m_Script: {fileID: 11500000, guid: 5c2b09cfa5cc80f4fa94196fa73af7bb, type: 3}
+  m_Name: DebuffGeneric
   m_EditorClassIdentifier: 
-  OwnCards: 1
+  value: 20
+  ownCards: 0
+  type: 0
