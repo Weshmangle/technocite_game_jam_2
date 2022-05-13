@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PlaceholderCurse
   m_EditorClassIdentifier: 
   nameCard: Curse of Stone
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: acf8904723794f649a15cecd5da8b172, type: 3}
   effects:
   - {fileID: 11400000, guid: e7f4dcba6c23f624fa8d14213fc7c816, type: 2}

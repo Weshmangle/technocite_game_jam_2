@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: CultXothian
   m_EditorClassIdentifier: 
   nameCard: Xothian
+  sprite: {fileID: 21300000, guid: 72744f9f3d8c5a04f9a8fac120795994, type: 3}
   effects:
   - {fileID: 11400000, guid: df0ce8eb89acee94da93822db19ac23a, type: 2}

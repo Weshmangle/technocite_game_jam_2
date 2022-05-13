@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: CultWitherer
   m_EditorClassIdentifier: 
   nameCard: Psychic Witherer
+  sprite: {fileID: 21300000, guid: bd4b8d390e275ba4f8f7ff5aafff295b, type: 3}
   effects:
   - {fileID: 11400000, guid: 477d001ea8034ee43bbc1626a916aee0, type: 2}

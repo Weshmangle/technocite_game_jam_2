@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlaceholderHound
   m_EditorClassIdentifier: 
   nameCard: Hound of Tindalos
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: eadcc10deb8e5ae43acf9d2c1430bdf6, type: 3}
   effects:
   - {fileID: 11400000, guid: e7f4dcba6c23f624fa8d14213fc7c816, type: 2}
   - {fileID: 11400000, guid: 0f47541bbe492b14a9c7bb6c9bf04583, type: 2}
