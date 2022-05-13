@@ -29,7 +29,7 @@ public class CountDown : MonoBehaviour
 
     void Update()
     {
-        if(started)
+        if(started && !GameManager.GAME_IS_OVER)
         {
             if(currentTime <= 0)
             {

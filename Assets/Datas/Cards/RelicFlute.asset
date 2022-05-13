@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: RelicFlute
   m_EditorClassIdentifier: 
   nameCard: Flute of Azathoth
+  typeCard: 1
   sprite: {fileID: 21300000, guid: 79a7e25fa576dc04f8b6005cc03e5e75, type: 3}
   effects:
   - {fileID: 11400000, guid: f831f4af850824a47a4565e06ad891ca, type: 2}

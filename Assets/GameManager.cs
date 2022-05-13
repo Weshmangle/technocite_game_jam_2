@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,20 +12,25 @@ public class GameManager : MonoBehaviour
     public static readonly float TIME_OUT_NEXT_BOOK = 60 * DEBUG_FACTOR;
     public static readonly float TIME_OUT_GAME_OVER = 5 * 60 * DEBUG_FACTOR;
     public static readonly float NUMBER_CARD_START = 3;
+    public static readonly float RELIC_COUNT_VICTORY = 10;
     public static bool GAME_IS_OVER;
 
     [SerializeField] public BoardPlayer boardPlayerA;
     [SerializeField] public BoardPlayer boardPlayerB;
+    public BoardPlayer winner;
 
     public List<Card> deckA = new List<Card>();
     public List<Card> deckB = new List<Card>();
     public GameObject prefabCard;
     public float currentTime = 0f;
     public CountDown globalCountDown;
+    public GameObject panelGameOver;
+    public Text textWin;
 
     private void Awake()
     {
         Instance = this;
+        boardPlayerB.canvasTextRelic.gameObject.SetActive(true);
     }
 
     void Start()
@@ -43,6 +49,17 @@ public class GameManager : MonoBehaviour
         else
         {
             GAME_IS_OVER = true;
+            winner = boardPlayerA;
+            textWin.text = $"{winner.Faction} / 10";
+            panelGameOver.gameObject.SetActive(true);
+        }
+        
+        if(boardPlayerB.countRelic == RELIC_COUNT_VICTORY)
+        {
+            GAME_IS_OVER = true;
+            winner = boardPlayerB;
+            textWin.text = $"{winner.Faction} / 10";
+            panelGameOver.gameObject.SetActive(true);
         }
     }
 
@@ -71,7 +88,7 @@ public class GameManager : MonoBehaviour
     {
         if(GAME_IS_OVER)
         {
-            return boardPlayerA;
+            return winner;
         }
         else
         {
