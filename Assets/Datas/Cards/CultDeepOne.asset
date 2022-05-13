@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: CultDeepOne
   m_EditorClassIdentifier: 
   nameCard: Deep One
+  sprite: {fileID: 21300000, guid: 2f8f0bc254d1465478f07972f0e2c569, type: 3}
   effects:
   - {fileID: 11400000, guid: e7f4dcba6c23f624fa8d14213fc7c816, type: 2}
   - {fileID: 11400000, guid: d2d0255f67521e44caef97a0df5fc8e3, type: 2}

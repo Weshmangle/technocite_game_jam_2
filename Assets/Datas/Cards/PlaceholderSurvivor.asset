@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: PlaceholderSurvivor
   m_EditorClassIdentifier: 
   nameCard: Survivor of the SS Alert
+  sprite: {fileID: 21300000, guid: 2f967e4069900e14baa2a8c4741267f3, type: 3}
   effects:
   - {fileID: 0}

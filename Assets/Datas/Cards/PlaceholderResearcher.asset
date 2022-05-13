@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: PlaceholderResearcher
   m_EditorClassIdentifier: 
   nameCard: Reclusive Researcher
+  sprite: {fileID: 21300000, guid: 7c853d08955b8e94cbecdb2bda999c93, type: 3}
   effects:
   - {fileID: 0}

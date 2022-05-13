@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: PlaceholderCaster
   m_EditorClassIdentifier: 
   nameCard: Hoy-Dinn Caster
+  sprite: {fileID: 21300000, guid: e5b5de0f985ca324ebc55058d6cad258, type: 3}
   effects:
   - {fileID: 0}

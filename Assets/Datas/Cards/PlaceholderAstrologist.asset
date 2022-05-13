@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PlaceholderAstrologist
   m_EditorClassIdentifier: 
   nameCard: Mad Astrologist
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 51332bfbe460ff840b3bcccbb466659d, type: 3}
   effects:
   - {fileID: 11400000, guid: fb1fae791e2535c458b8072b802e36c4, type: 2}
