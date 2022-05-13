@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b3f98928250a6041adb1a5dba2c543c, type: 3}
-  m_Name: PlaceholderSurvivor
+  m_Script: {fileID: 11500000, guid: e53d9d5fb1ed4fd4d81f980fefcf985a, type: 3}
+  m_Name: CoolDownFanatic 1
   m_EditorClassIdentifier: 
-  nameCard: Survivor of the SS Alert
-  sprite: {fileID: 21300000, guid: 2f967e4069900e14baa2a8c4741267f3, type: 3}
   effects:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 57b62c12c1d749149b643403d5f26ca4, type: 2}
+  - {fileID: 11400000, guid: 317674d8fed329d4291151ac55581516, type: 2}
+  cooldownValue: 10
+  currentTime: 0

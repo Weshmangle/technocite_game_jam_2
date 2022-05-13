@@ -9,7 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a88ccae60bb735646b4c4c1ad7d186ce, type: 3}
-  m_Name: DiscardOwn
+  m_Script: {fileID: 11500000, guid: e53d9d5fb1ed4fd4d81f980fefcf985a, type: 3}
+  m_Name: CoolDownSapper
   m_EditorClassIdentifier: 
-  OwnCards: 1
+  effects:
+  - {fileID: 11400000, guid: 57b62c12c1d749149b643403d5f26ca4, type: 2}
+  - {fileID: 11400000, guid: 0f47541bbe492b14a9c7bb6c9bf04583, type: 2}
+  cooldownValue: 5
+  currentTime: 0
