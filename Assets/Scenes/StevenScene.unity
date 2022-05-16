@@ -1114,6 +1114,7 @@ MonoBehaviour:
   globalCountDown: {fileID: 535338270}
   panelGameOver: {fileID: 857694398}
   textWin: {fileID: 856331730}
+  particlesPrefab: {fileID: 4534457433612963349, guid: f504a0d11c1571c479e9e62f1d7b1b20, type: 3}
 --- !u!4 &1693867124
 Transform:
   m_ObjectHideFlags: 0
