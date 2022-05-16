@@ -13,6 +13,7 @@ public class AttakEffect : Effect
         
         if(opponent.ground.places[index].card)
         {
+            card.AnimeAttak();
             opponent.ground.DestroyCard(index);
         }
     }

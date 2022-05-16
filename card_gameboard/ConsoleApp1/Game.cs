@@ -29,29 +29,43 @@ public class Game
     public void PlayCard(Card card, GroundEmplacement emplacement)
     {
         emplacement.board.PlayCard(card, emplacement);
-        
-        foreach (var effect in card.Prototype.effects)
+    }
+
+    public void UpdateTimer(float time)
+    {
+        foreach (var board in boards)
         {
-            foreach (var interaction in effect.interactions)
+            foreach (var card in board.GetGround().Cards())
             {
-                switch (interaction.type)
+                foreach (var effect in card.Prototype.effects)
                 {
-                    case TypeInteractionsBoard.ADD_GROUND:
-                        ExecuteInterractionAddGround(interaction, emplacement);
-                        break;
+                    effect.currentTime += time;
                     
-                    case TypeInteractionsBoard.REMOVE_GROUND:
-                        ExecuteInterractionRemoveGround(interaction, emplacement);
-                        break;
+                    if(effect.currentTime > effect.timeCooldown)
+                    {
+                        foreach (var interaction in effect.interactions)
+                        {
+                            switch (interaction.type)
+                            {
+                                case TypeInteractionsBoard.ADD_GROUND:
+                                    ExecuteInterractionAddGround(interaction, emplacement);
+                                    break;
+                                
+                                case TypeInteractionsBoard.REMOVE_GROUND:
+                                    ExecuteInterractionRemoveGround(interaction, emplacement);
+                                    break;
 
-                    case TypeInteractionsBoard.SPECIFIC_PICK_DECK:
-                        ExecuteInterractionPickDeck(interaction, card);
-                        break;
+                                case TypeInteractionsBoard.SPECIFIC_PICK_DECK:
+                                    ExecuteInterractionPickDeck(interaction, card);
+                                    break;
 
-                    case TypeInteractionsBoard.RANDOM_PICK_DECK:
-                        ExecuteInterractionRemoveGround(interaction, emplacement);
-                        break;
-                }
+                                case TypeInteractionsBoard.RANDOM_PICK_DECK:
+                                    ExecuteInterractionRemoveGround(interaction, emplacement);
+                                    break;
+                            }
+                        }
+                    }
+                }   
             }
         }
     }

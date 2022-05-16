@@ -45,8 +45,7 @@ public class BoardPlayer : MonoBehaviour
         {
             if(!hand.HandIsFull() && !deck.isEmpty())
             {
-                Card card = deck.PickCardOnTop();
-                hand.AppendCard(card);
+                PickCard();
             }
             currentTime = 0f;
             deck.countDownNextCard.SetTimeOut(GameManager.TIME_OUT_NEXT_CARD);
@@ -123,9 +122,10 @@ public class BoardPlayer : MonoBehaviour
         cardSelected = null;
     }
 
-    public void PickCard()
+    public Card PickCard()
     {
         Card card = deck.PickCardOnTop();
         hand.AppendCard(card);
+        return card;
     }
 }

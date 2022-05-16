@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,9 @@ public class Card : MonoBehaviour
     public PrototypeCard prottotypeCard;
     public SpriteRenderer spriteFront;
     public CountDown countDown;
+    public int index;
+
+    protected bool animeAttak = false;
 
     public void PlayCard()
     {
@@ -23,6 +27,11 @@ public class Card : MonoBehaviour
         spriteFront.sprite = proto.sprite;
     }
 
+    public void AnimeAttak()
+    {
+        animeAttak = true;
+    }
+
     public void StartTimer(float startTime)
     {
         countDown.gameObject.SetActive(true);
@@ -33,8 +42,19 @@ public class Card : MonoBehaviour
     public static Card CreateCard(PrototypeCard proto)
     {
         GameObject instance = Instantiate(GameManager.Instance.prefabCard);
+        instance.transform.Rotate(new Vector3(0,0,180));
         Card card = instance.GetComponent<Card>();
         card.SetPrototype(proto);
         return card;
+    }
+
+    private void Update()
+    {
+        if(animeAttak)
+        {
+            Vector3 position = transform.position;
+            position.x += position.x * Time.deltaTime;
+            transform.position = position;
+        }
     }
 }

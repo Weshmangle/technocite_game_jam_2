@@ -39,7 +39,8 @@ public class Ground : MonoBehaviour
         }
 
         places[index].card = null;
-        Destroy(card.gameObject);
+        GameManager.Instance.AddParticlesToCard(card);
+        Destroy(card.gameObject, 1f);
         
         return card;
     }

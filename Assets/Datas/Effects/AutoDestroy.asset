@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab333632e7db27f4996741bbc596c473, type: 3}
   m_Name: AutoDestroy
   m_EditorClassIdentifier: 
+  particlesPrefab: {fileID: 4534457433612963349, guid: f504a0d11c1571c479e9e62f1d7b1b20, type: 3}

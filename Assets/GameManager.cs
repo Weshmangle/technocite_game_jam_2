@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public static readonly float DEBUG_FACTOR = .5f;
+    public static readonly float DEBUG_FACTOR = .1f;
     public static readonly float TIME_OUT_NEXT_CARD = 20 * DEBUG_FACTOR;
     public static readonly float TIME_OUT_NEXT_BOOK = 60 * DEBUG_FACTOR;
     public static readonly float TIME_OUT_GAME_OVER = 5 * 60 * DEBUG_FACTOR;
@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     public CountDown globalCountDown;
     public GameObject panelGameOver;
     public Text textWin;
+    public GameObject particlesPrefab;
 
     private void Awake()
     {
@@ -102,5 +103,13 @@ public class GameManager : MonoBehaviour
         {
             throw new System.Exception("No winner because Game is not finish");
         }
+    }
+
+    public void AddParticlesToCard(Card card)
+    {
+        Vector3 position = card.transform.position;
+        position.y = 1f;
+        Instantiate(particlesPrefab, position, card.transform.rotation, card.transform);
+        card.transform.localScale = Vector3.zero;
     }
 }

@@ -9,17 +9,38 @@ public class Hand : MonoBehaviour
 
     public List<Card> cards = new List<Card>();
     public GameObject[] places;
+    public List<Card> cardsAnimated = new List<Card>();
 
     void Update()
     {
         placeCards();
+        
+        foreach (var card in cards)
+        {
+            if(cardsAnimated.Contains(card))
+            {
+                Vector3 position = places[card.index].transform.position - card.transform.position;
+                float v = Quaternion.Angle(places[card.index].transform.rotation, card.transform.rotation);
+                
+                if(Mathf.Approximately(0.0f, v))
+                {
+                    card.transform.rotation = Quaternion.identity;
+                    cardsAnimated.Remove(card);
+                }
+                else
+                {
+                    card.transform.Translate(position * Time.deltaTime);
+                    card.transform.Rotate(new Vector3(0, 0, v) * Time.deltaTime * 2);
+                }
+            }            
+        }
     }
 
     public void placeCards()
     {
         for (int index = 0; index < cards.Count; index++)
         {
-            if(cards[index])
+            if(cards[index] && !cardsAnimated.Contains(cards[index]))
             {
                 cards[index].transform.position = places[index].transform.position;
             }
@@ -39,8 +60,10 @@ public class Hand : MonoBehaviour
         }
         else
         {
-            cards.Add(card);
+            card.index = cards.Count;
             card.transform.parent = transform;
+            cards.Add(card);
+            cardsAnimated.Add(card);
         }
     }
 

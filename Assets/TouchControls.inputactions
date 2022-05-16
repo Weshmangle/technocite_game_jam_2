@@ -1,5 +1,5 @@
 {
-    "name": "TouchControl",
+    "name": "TouchControls",
     "maps": [
         {
             "name": "Touch",
@@ -31,6 +31,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "TestMove",
+                    "type": "Value",
+                    "id": "f8a66a07-c12c-4406-946b-16d43566569d",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -64,6 +73,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "TouchPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b82964ce-324b-432c-82ff-3647a51b20c5",
+                    "path": "<Touchscreen>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TestMove",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

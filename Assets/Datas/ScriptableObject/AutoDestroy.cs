@@ -7,7 +7,13 @@ public class AutoDestroy : Effect
 {
     public override void Execute(Card card)
     {
-        Debug.Log("sds");
-        Destroy(card.gameObject);
+        card.StartCoroutine(Timeout(5, card));
+    }
+    public IEnumerator Timeout(float time, Card card)
+    {
+        yield return new WaitForSeconds(time);
+        
+        GameManager.Instance.AddParticlesToCard(card);
+        Destroy(card.gameObject, 2f);
     }
 }
