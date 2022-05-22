@@ -22,7 +22,7 @@ public class Hand : MonoBehaviour
                 Vector3 position = places[card.index].transform.position - card.transform.position;
                 float v = Quaternion.Angle(places[card.index].transform.rotation, card.transform.rotation);
                 
-                if(Mathf.Approximately(0.0f, v))
+                 if(Mathf.Approximately(0.0f, v))
                 {
                     card.transform.rotation = Quaternion.identity;
                     cardsAnimated.Remove(card);
