@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public static readonly float DEBUG_FACTOR = .1f;
+    public static readonly float DEBUG_FACTOR = 1f;
     public static readonly float TIME_OUT_NEXT_CARD = 20 * DEBUG_FACTOR;
     public static readonly float TIME_OUT_NEXT_BOOK = 60 * DEBUG_FACTOR;
     public static readonly float TIME_OUT_GAME_OVER = 5 * 60 * DEBUG_FACTOR;
@@ -37,6 +37,23 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        foreach (var card in boardPlayerA.deck.cards)
+        {
+            card.currentBackcard = card.backcardA;
+        }
+
+        foreach (var card in boardPlayerB.deck.cards)
+        {
+            card.currentBackcard = card.backcardB;
+        }
+
+        Card[] cards = boardPlayerB.deck.GetComponentsInChildren<Card>();
+
+        foreach (var card in cards)
+        {
+            card.currentBackcard = card.backcardB;
+        }
+
         StarterPickCard();
         globalCountDown.SetTimeOut(TIME_OUT_GAME_OVER);
         globalCountDown.StartCoundtDown();

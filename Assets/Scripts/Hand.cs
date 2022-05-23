@@ -20,17 +20,17 @@ public class Hand : MonoBehaviour
             if(cardsAnimated.Contains(card))
             {
                 Vector3 position = places[card.index].transform.position - card.transform.position;
-                float v = Quaternion.Angle(places[card.index].transform.rotation, card.transform.rotation);
+                float angle = Quaternion.Angle(places[card.index].transform.rotation, card.transform.rotation);
                 
-                 if(Mathf.Approximately(0.0f, v))
+                 if(Mathf.Approximately(0.0f, angle))
                 {
                     card.transform.rotation = Quaternion.identity;
                     cardsAnimated.Remove(card);
                 }
                 else
                 {
-                    card.transform.Translate(position * Time.deltaTime);
-                    card.transform.Rotate(new Vector3(0, 0, v) * Time.deltaTime * 2);
+                    card.transform.position += position * Time.deltaTime * 1f;
+                    card.transform.Rotate(new Vector3(0, 0, angle) * Time.deltaTime);
                 }
             }            
         }

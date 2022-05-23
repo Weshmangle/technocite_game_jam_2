@@ -7,17 +7,22 @@ using UnityEngine.UI;
 
 public class InputManager : MonoBehaviour
 {
+    public static InputManager Instance;
     private TouchControls touchControls;
     public int stateSpeaker = 0;
 
-    private void Awake() {
+    public Vector2 positionTouch;
+    public bool clicked;
+
+    private void Awake()
+    {
         touchControls = new TouchControls();
+        Instance = this;
     }
 
     private void OnEnable()
     {
         touchControls.Enable();
-        Debug.Log("Height " + Screen.height);
     }
 
     private void OnDisable()
@@ -32,7 +37,7 @@ public class InputManager : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log(touchControls.Touch.TouchPosition.ReadValue<Vector2>());
+        positionTouch = touchControls.Touch.TouchPosition.ReadValue<Vector2>();
     }
 
     private void StartTouch(InputAction.CallbackContext context)
@@ -47,10 +52,13 @@ public class InputManager : MonoBehaviour
         {
             Debug.Log("Player 2 touch" + position.x + ", " + position.y);
         }
+
+        clicked = true;
     }
     
     private void EndTouch(InputAction.CallbackContext context)
     {
-        //Debug.Log("end touch");
+        clicked = false;
+        Debug.Log("end");
     }
 }

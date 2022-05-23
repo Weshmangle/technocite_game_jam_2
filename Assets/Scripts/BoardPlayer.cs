@@ -19,7 +19,7 @@ public class BoardPlayer : MonoBehaviour
    {
         foreach (var protoCard in starterDeck.cards)
         {
-                Card card = Card.CreateCard(protoCard);
+                Card card = Card.CreateCard(protoCard, deck.transform);
                 card.boardPlayer = this;
                 deck.AddCard(card);
         }
@@ -57,17 +57,30 @@ public class BoardPlayer : MonoBehaviour
         {
             currentTime += Time.deltaTime;
         }
-        if(Input.GetMouseButtonDown(0))
+
+        if(InputManager.Instance.clicked)
         {
             RaycastHit raycastHit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            Ray ray = Camera.main.ScreenPointToRay(InputManager.Instance.positionTouch);
+            
             if(Physics.Raycast(ray, out raycastHit, 100f))
             {
                 if(raycastHit.transform != null)
                 {
-                    Card card = raycastHit.transform.gameObject.GetComponent<Card>();
+                    Debug.DrawRay(ray.origin, ray.direction * 20, Color.red, 10);
                     
-                    if(card)
+                    Card card = raycastHit.transform.gameObject.GetComponent<Card>();
+
+                    if(cardSelected)
+                    {
+                        Vector3 position = card.transform.position;
+                        position.x = ray.origin.x;
+                        position.z = ray.origin.z;
+                        card.transform.position = position;
+                    }
+                    
+                    if(!cardSelected && card)
                     {
                         if(card.boardPlayer.name == name)
                         {

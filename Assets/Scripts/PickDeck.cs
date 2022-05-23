@@ -50,6 +50,7 @@ public class PickDeck : MonoBehaviour
         cards.Add(card);
         card.transform.parent = transform;
         card.transform.localPosition = Vector3.zero;
+        card.transform.Rotate(new Vector3(0, 0, 180));
     }
 
     public void AddCards(Card[] collectionCards)

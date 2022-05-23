@@ -9,6 +9,9 @@ public class Card : MonoBehaviour
     public PrototypeCard prottotypeCard;
     public SpriteRenderer spriteFront;
     public CountDown countDown;
+    public GameObject backcardA;
+    public GameObject backcardB;
+    public GameObject currentBackcard;
     public int index;
 
     protected bool animeAttak = false;
@@ -39,10 +42,9 @@ public class Card : MonoBehaviour
         countDown.StartCoundtDown();
     }
 
-    public static Card CreateCard(PrototypeCard proto)
+    public static Card CreateCard(PrototypeCard proto, Transform transform)
     {
-        GameObject instance = Instantiate(GameManager.Instance.prefabCard);
-        instance.transform.Rotate(new Vector3(0,0,180));
+        GameObject instance = Instantiate(GameManager.Instance.prefabCard, transform);
         Card card = instance.GetComponent<Card>();
         card.SetPrototype(proto);
         return card;
@@ -50,6 +52,11 @@ public class Card : MonoBehaviour
 
     private void Update()
     {
+        if(currentBackcard)
+        {
+            currentBackcard.SetActive(true);
+        }
+
         if(animeAttak)
         {
             Vector3 position = transform.position;
