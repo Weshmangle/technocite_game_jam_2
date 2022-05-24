@@ -4,11 +4,12 @@ public class SoundManager : MonoBehaviour
 {
     public SoundManager Instance;
 
+    public string pathFilesSound;
+
     private void Update()
     {
-        // Test de la fonction PlaySound
-            PlaySound("DESTROY_CARD");
-            PlaySound("PICK_CARD");
+        PlaySound("DESTROY_CARD");
+        PlaySound("PICK_CARD");
     }
 
     public void PlaySound(string nameSound)

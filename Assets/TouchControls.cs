@@ -62,6 +62,15 @@ public partial class @TouchControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""New action"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""1e020a2e-7b9b-4eb1-907e-1d690ce1986a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -108,6 +117,17 @@ public partial class @TouchControls : IInputActionCollection2, IDisposable
                     ""action"": ""TestMove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""31f44bd1-4212-4a7a-a458-eb93459f3fb3"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""New action"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -120,6 +140,7 @@ public partial class @TouchControls : IInputActionCollection2, IDisposable
         m_Touch_TouchPress = m_Touch.FindAction("TouchPress", throwIfNotFound: true);
         m_Touch_TouchPosition = m_Touch.FindAction("TouchPosition", throwIfNotFound: true);
         m_Touch_TestMove = m_Touch.FindAction("TestMove", throwIfNotFound: true);
+        m_Touch_Newaction = m_Touch.FindAction("New action", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -183,6 +204,7 @@ public partial class @TouchControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Touch_TouchPress;
     private readonly InputAction m_Touch_TouchPosition;
     private readonly InputAction m_Touch_TestMove;
+    private readonly InputAction m_Touch_Newaction;
     public struct TouchActions
     {
         private @TouchControls m_Wrapper;
@@ -191,6 +213,7 @@ public partial class @TouchControls : IInputActionCollection2, IDisposable
         public InputAction @TouchPress => m_Wrapper.m_Touch_TouchPress;
         public InputAction @TouchPosition => m_Wrapper.m_Touch_TouchPosition;
         public InputAction @TestMove => m_Wrapper.m_Touch_TestMove;
+        public InputAction @Newaction => m_Wrapper.m_Touch_Newaction;
         public InputActionMap Get() { return m_Wrapper.m_Touch; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -212,6 +235,9 @@ public partial class @TouchControls : IInputActionCollection2, IDisposable
                 @TestMove.started -= m_Wrapper.m_TouchActionsCallbackInterface.OnTestMove;
                 @TestMove.performed -= m_Wrapper.m_TouchActionsCallbackInterface.OnTestMove;
                 @TestMove.canceled -= m_Wrapper.m_TouchActionsCallbackInterface.OnTestMove;
+                @Newaction.started -= m_Wrapper.m_TouchActionsCallbackInterface.OnNewaction;
+                @Newaction.performed -= m_Wrapper.m_TouchActionsCallbackInterface.OnNewaction;
+                @Newaction.canceled -= m_Wrapper.m_TouchActionsCallbackInterface.OnNewaction;
             }
             m_Wrapper.m_TouchActionsCallbackInterface = instance;
             if (instance != null)
@@ -228,6 +254,9 @@ public partial class @TouchControls : IInputActionCollection2, IDisposable
                 @TestMove.started += instance.OnTestMove;
                 @TestMove.performed += instance.OnTestMove;
                 @TestMove.canceled += instance.OnTestMove;
+                @Newaction.started += instance.OnNewaction;
+                @Newaction.performed += instance.OnNewaction;
+                @Newaction.canceled += instance.OnNewaction;
             }
         }
     }
@@ -238,5 +267,6 @@ public partial class @TouchControls : IInputActionCollection2, IDisposable
         void OnTouchPress(InputAction.CallbackContext context);
         void OnTouchPosition(InputAction.CallbackContext context);
         void OnTestMove(InputAction.CallbackContext context);
+        void OnNewaction(InputAction.CallbackContext context);
     }
 }

@@ -41,21 +41,20 @@ public class BoardPlayer : MonoBehaviour
     
     void Update()
     {
-        if(currentTime > GameManager.TIME_OUT_NEXT_CARD)
+        if(deck.countDownNextCard.finish)
         {
             if(!hand.HandIsFull() && !deck.isEmpty())
             {
                 PickCard();
             }
-            currentTime = 0f;
             deck.countDownNextCard.SetTimeOut(GameManager.TIME_OUT_NEXT_CARD);
             deck.countDownNextCard.StartCoundtDown();
+        }
+
+        if(deck.countDownNextBook.finish)
+        {
             deck.countDownNextBook.SetTimeOut(GameManager.TIME_OUT_NEXT_BOOK);
             deck.countDownNextBook.StartCoundtDown();
-        }
-        else
-        {
-            currentTime += Time.deltaTime;
         }
 
         if(InputManager.Instance.clicked)
@@ -69,50 +68,52 @@ public class BoardPlayer : MonoBehaviour
                 if(raycastHit.transform != null)
                 {
                     Debug.DrawRay(ray.origin, ray.direction * 20, Color.red, 10);
-                    
-                    Card card = raycastHit.transform.gameObject.GetComponent<Card>();
 
                     if(cardSelected)
                     {
-                        Vector3 position = card.transform.position;
+                        Vector3 position = cardSelected.transform.position;
                         position.x = ray.origin.x;
                         position.z = ray.origin.z;
-                        card.transform.position = position;
-                    }
-                    
-                    if(!cardSelected && card)
-                    {
-                        if(card.boardPlayer.name == name)
-                        {
-                            if(cardSelected)
-                            {
-                                cardSelected.transform.localScale = Vector3.one;
-                                cardSelected = null;
-                            }
-                            else
-                            {
-                                cardSelected = card;
-                                cardSelected.transform.localScale *= 1.1f;
-                                
-                                if(card.prottotypeCard.typeCard == TypeCard.RELIC)
-                                {
-                                    PlayRelicSelected();
-                                }
-                            }   
-                        }
+                        cardSelected.transform.position = position;
                     }
                     else
                     {
-                        PlaceCardGround placeCardGround = raycastHit.transform.gameObject.GetComponent<PlaceCardGround>();
-                        
-                        if(placeCardGround)
-                        {                 
-                            if(placeCardGround.board.name == name && cardSelected)
+                        Card card = raycastHit.transform.gameObject.GetComponent<Card>();
+                    
+                        if(!cardSelected && card)
+                        {
+                            if(card.boardPlayer.name == name)
                             {
-                                PlaydCardSelected(placeCardGround);
-                                cardSelected.PlayCard();
-                                cardSelected = null;
-                            }   
+                                if(cardSelected)
+                                {
+                                    cardSelected.transform.localScale = Vector3.one;
+                                    cardSelected = null;
+                                }
+                                else
+                                {
+                                    cardSelected = card;
+                                    cardSelected.transform.localScale *= 1.1f;
+                                    
+                                    if(card.prottotypeCard.typeCard == TypeCard.RELIC)
+                                    {
+                                        PlayRelicSelected();
+                                    }
+                                }   
+                            }
+                        }
+                        else
+                        {
+                            PlaceCardGround placeCardGround = raycastHit.transform.gameObject.GetComponent<PlaceCardGround>();
+                            
+                            if(placeCardGround)
+                            {                 
+                                if(placeCardGround.board.name == name && cardSelected)
+                                {
+                                    PlaydCardSelected(placeCardGround);
+                                    cardSelected.PlayCard();
+                                    cardSelected = null;
+                                }   
+                            }
                         }
                     }
                 }

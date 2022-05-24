@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public static readonly float DEBUG_FACTOR = 1f;
+    public static readonly float DEBUG_FACTOR = .1f;
     public static readonly float TIME_OUT_NEXT_CARD = 20 * DEBUG_FACTOR;
     public static readonly float TIME_OUT_NEXT_BOOK = 60 * DEBUG_FACTOR;
     public static readonly float TIME_OUT_GAME_OVER = 5 * 60 * DEBUG_FACTOR;

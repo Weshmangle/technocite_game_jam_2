@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class CountDown : MonoBehaviour
 {
@@ -9,10 +10,10 @@ public class CountDown : MonoBehaviour
     public float startTime;
     public bool finish;
     public bool started = false;
-
-    [SerializeField] public Text text;
+    public bool switchColor;
+    [SerializeField] public TMPro.TextMeshProUGUI text;
     [SerializeField] public Slider slider;
-
+    [SerializeField] public GameObject sprite;
     
     public void SetTimeOut(float value)
     {
@@ -29,6 +30,8 @@ public class CountDown : MonoBehaviour
 
     void Update()
     {
+        sprite.SetActive(switchColor);
+        
         if(started && !GameManager.GAME_IS_OVER)
         {
             if(currentTime <= 0)
@@ -39,7 +42,7 @@ public class CountDown : MonoBehaviour
             else
             {
                 currentTime -= Time.deltaTime;
-                slider.value = currentTime/startTime;
+                slider.value = 1-currentTime/startTime;
                 text.text = currentTime.ToString("00");
             }
         }
