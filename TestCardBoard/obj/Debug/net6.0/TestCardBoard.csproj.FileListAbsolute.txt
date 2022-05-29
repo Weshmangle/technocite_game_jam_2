@@ -1,0 +1,15 @@
+C:\Users\devel\TestCardBoard\bin\Debug\net6.0\TestCardBoard.exe
+C:\Users\devel\TestCardBoard\bin\Debug\net6.0\TestCardBoard.deps.json
+C:\Users\devel\TestCardBoard\bin\Debug\net6.0\TestCardBoard.runtimeconfig.json
+C:\Users\devel\TestCardBoard\bin\Debug\net6.0\TestCardBoard.dll
+C:\Users\devel\TestCardBoard\bin\Debug\net6.0\TestCardBoard.pdb
+C:\Users\devel\TestCardBoard\obj\Debug\net6.0\TestCardBoard.csproj.AssemblyReference.cache
+C:\Users\devel\TestCardBoard\obj\Debug\net6.0\TestCardBoard.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\devel\TestCardBoard\obj\Debug\net6.0\TestCardBoard.AssemblyInfoInputs.cache
+C:\Users\devel\TestCardBoard\obj\Debug\net6.0\TestCardBoard.AssemblyInfo.cs
+C:\Users\devel\TestCardBoard\obj\Debug\net6.0\TestCardBoard.csproj.CoreCompileInputs.cache
+C:\Users\devel\TestCardBoard\obj\Debug\net6.0\TestCardBoard.dll
+C:\Users\devel\TestCardBoard\obj\Debug\net6.0\refint\TestCardBoard.dll
+C:\Users\devel\TestCardBoard\obj\Debug\net6.0\TestCardBoard.pdb
+C:\Users\devel\TestCardBoard\obj\Debug\net6.0\TestCardBoard.genruntimeconfig.cache
+C:\Users\devel\TestCardBoard\obj\Debug\net6.0\ref\TestCardBoard.dll
