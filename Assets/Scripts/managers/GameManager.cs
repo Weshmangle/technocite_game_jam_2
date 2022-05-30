@@ -24,23 +24,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        foreach (var card in boardPlayerA.deck.cards)
-        {
-            card.currentBackcard = card.backcardA;
-        }
-
-        foreach (var card in boardPlayerB.deck.cards)
-        {
-            card.currentBackcard = card.backcardB;
-        }
-
         UCard[] cards = boardPlayerB.deck.GetComponentsInChildren<UCard>();
-
-        foreach (var card in cards)
-        {
-            card.currentBackcard = card.backcardB;
-        }
-        
         StarterPickCard();
         globalCountDown.SetTimeOut(datasGame.durationSecondsGame);
         globalCountDown.StartCoundtDown();

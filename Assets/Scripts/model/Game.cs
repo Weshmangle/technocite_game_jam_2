@@ -19,7 +19,7 @@ namespace model
         {
             if(boards.Count != 0)
             {
-                throw new System.Exception("Game is Already prepare");
+                throw new System.Exception("Game is Already prepare"); 
             }
             
             foreach (var deck in decks)

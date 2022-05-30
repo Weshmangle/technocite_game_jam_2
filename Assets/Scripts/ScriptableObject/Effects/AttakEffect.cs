@@ -8,7 +8,7 @@ public class AttakEffect : EffectSO
     public override void Execute(UCard card)
     {
         UBoard opponent = GameManager.Instance.GetBoardOpponent(card);
-        int index = card.boardPlayer.ground.GetIndexFromCard(card);
+        int index = card.Board.ground.GetIndexFromCard(card);
         index = opponent.ground.places.Length-1 - index;
         
         if(opponent.ground.places[index].card)

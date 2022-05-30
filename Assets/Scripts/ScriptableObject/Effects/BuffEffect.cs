@@ -11,7 +11,7 @@ public class BuffEffect : EffectSO
     
     public override void Execute(UCard card)
     {
-        if(card.boardPlayer == GameManager.Instance.boardPlayerA)
+        if(card.Board == GameManager.Instance.boardPlayerA)
         {
             //GameManager.Instance.boardPlayerB.hand.remove()
         }
