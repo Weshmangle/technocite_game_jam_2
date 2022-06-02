@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 7892042008935910557}
   - component: {fileID: 1537476727444226984}
   m_Layer: 0
-  m_Name: PlaceCardGround
+  m_Name: EmplacementCard
   m_TagString: AreaPlayed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1661785120651229061}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90f6ab743d0f6fc448b01d56f789ef00, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c1052d031d04094d95535deb23436ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   board: {fileID: 0}

@@ -73,7 +73,7 @@ namespace model
             return deck;
         }
 
-        public void Update(object args)
+        public void UpdateBoardGame(object args)
         {
             Notify(args);
         }

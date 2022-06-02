@@ -14,6 +14,7 @@ namespace model
         protected float timeNextCard = 20;
         protected float timeNextBook = 20;
         protected float cardCountStart = 3;
+        protected bool gameIsRunning = false;
 
         public void PrepareGame(int maxCardsHand, int countEmplacementsGround, float durationGame, float timeNextCard, float timeNextBook, params List<PrototypeCard>[] decks)
         {
@@ -38,6 +39,11 @@ namespace model
             Notify(new {info = "Game prepared", source = this});
         }
 
+        public void StartGame()
+        {
+            gameIsRunning = true;
+        }
+
         public Board GetOpponentBoard(Board board)
         {
             List<Board> boards1 = boards.ToList();
@@ -47,28 +53,71 @@ namespace model
         
         public void UpdateCards(float time)
         {
-            foreach (var board in boards)
+            if(gameIsRunning)
             {
-                foreach (var card in board.GetGround().Cards())
+                foreach (var board in boards)
                 {
-                    if(card.currentEffect.IsComplete())
+                    foreach (var card in board.GetGround().Cards())
                     {
-                        card.NextEffect();
-                        Notify(new {info = "Next effect", source = card});
+                        if(card.currentEffect.IsComplete())
+                        {
+                            card.NextEffect();
+                            Notify(new {info = "Next effect", source = card});
+                        }
+                        else
+                        {
+                            card.currentEffect.Progress(time, card, "");
+                            Notify(new {info = "effect on progress", source = card});
+                        }
                     }
-                    else
-                    {
-                        card.currentEffect.Progress(time, card, "");
-                        Notify(new {info = "effect on progress", source = card});
-                    }
+                }                
+            }
+            else
+            {
+                throw new Exception("Game Is not Running. Please make StartGame for started Game");
+            }
+        }
+
+        public void PickCard(Board board)
+        {
+            if(boards.Contains(board))
+            {
+                if(gameIsRunning)
+                {
+                    board.PickCard();
                 }
+                else
+                {
+                    throw new Exception("Game is not running, please make StartGame() before");
+                }
+            }
+            else
+            {
+                throw new Exception("Is not a board from this game");
             }
         }
 
         public void IncrementTime(float time)
         {
-            currentTime += time;
-            boardWinner = currentTime < durationGame ? null : boards[0];
+            if(gameIsRunning)
+            {
+                currentTime += time;
+                boardWinner = currentTime < durationGame ? null : boards[0];
+            }
+            else
+            {
+                throw new Exception("Game Is not Running. Please make StartGame for started Game");
+            }
+        }
+
+        public Board Board(int index)
+        {
+            return boards[index];
+        }
+
+        public Board[] Boards
+        {
+            get{return this.boards.ToArray();}
         }
 
         public Board GetBoard(bool self)
@@ -96,7 +145,12 @@ namespace model
             return boardWinner is not null;
         }
 
-        public void Update(object args)
+        public bool IsRunning()
+        {
+            return this.gameIsRunning;
+        }
+
+        public void UpdateBoardGame(object args)
         {
             Notify(args);
         }

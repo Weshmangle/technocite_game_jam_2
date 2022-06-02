@@ -20,10 +20,17 @@ public class UCard : MonoBehaviour
     protected GameObject backcard;
     protected int index;
     protected bool animeAttak = false;
+    protected UPrototypeCard proto;
+    public UEmplacementCard empplacement;
 
     public UBoard Board
     {
         get {return boardPlayer;}
+    }
+
+    public UPrototypeCard Prototype
+    {
+        get { return proto; }
     }
 
     public void PlayCard()

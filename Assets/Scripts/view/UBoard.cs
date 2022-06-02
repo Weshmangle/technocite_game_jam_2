@@ -3,12 +3,11 @@ using UnityEngine.UI;
 
 public class UBoard : MonoBehaviour
 {
-    public PickDeck deck;
     public StarterDeck starterDeck;
+    public PickDeck deck;
     public UHand hand;
     public UGround ground;
     public float currentTime = 0f;
-
     public UCard cardSelected;
     public string Faction;
     public GameObject canvasTextRelic;
@@ -19,16 +18,15 @@ public class UBoard : MonoBehaviour
    {
         foreach (var protoCard in starterDeck.cards)
         {
-                UCard card = UCard.CreateCard(protoCard, deck.transform);
-                card.boardPlayer = this;
+                UCard card = UCard.CreateCard(protoCard, deck.transform, new PropertiesUCard{board = this});
                 deck.AddCard(card);
         }
        
         Faction = starterDeck.name;
 
-        for (int index = 0; index < ground.places.Length; index++)
+        for (int index = 0; index < ground.emplacements.Length; index++)
         {
-            PlaceCardGround placeCardGround = ground.places[index];
+            UEmplacementCard placeCardGround = ground.emplacements[index];
             placeCardGround.board = this;
             placeCardGround.index = index;
         }
@@ -82,7 +80,7 @@ public class UBoard : MonoBehaviour
                     
                         if(!cardSelected && card)
                         {
-                            if(card.boardPlayer.name == name)
+                            if(card.Board.name == name)
                             {
                                 if(cardSelected)
                                 {
@@ -94,7 +92,7 @@ public class UBoard : MonoBehaviour
                                     cardSelected = card;
                                     cardSelected.transform.localScale *= 1.1f;
                                     
-                                    if(card.prottotypeCard.typeCard == TypeCard.RELIC)
+                                    if(card.Prototype.typeCard == TypeCard.RELIC)
                                     {
                                         PlayRelicSelected();
                                     }
@@ -103,16 +101,16 @@ public class UBoard : MonoBehaviour
                         }
                         else
                         {
-                            PlaceCardGround placeCardGround = raycastHit.transform.gameObject.GetComponent<PlaceCardGround>();
+                            UEmplacementCard placeCardGround = raycastHit.transform.gameObject.GetComponent<UEmplacementCard>();
                             
                             if(placeCardGround)
-                            {                 
+                            {
                                 if(placeCardGround.board.name == name && cardSelected)
                                 {
                                     PlaydCardSelected(placeCardGround);
                                     cardSelected.PlayCard();
                                     cardSelected = null;
-                                }   
+                                }
                             }
                         }
                     }
@@ -121,7 +119,7 @@ public class UBoard : MonoBehaviour
         }
     }
 
-    public void PlaydCardSelected(PlaceCardGround place)
+    public void PlaydCardSelected(UEmplacementCard place)
     {
         hand.cards.Remove(cardSelected);
         ground.AppendCard(place.index, cardSelected);

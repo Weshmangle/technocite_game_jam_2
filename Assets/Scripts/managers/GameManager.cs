@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, model.Observer
 {
     public static GameManager Instance;
     public static float DEBUG_FACTOR = .1f;
@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public CountDown globalCountDown;
     public model.Game game;
     protected bool gameIsOver;
+    protected UBoard[] boards;
 
     private void Awake()
     {
@@ -19,12 +20,31 @@ public class GameManager : MonoBehaviour
         gameIsOver = false;
         boardPlayerB.canvasTextRelic.gameObject.SetActive(true);
         game = new model.Game();
-        game.PrepareGame(5, 5, datasGame.durationSecondsGame, datasGame.numberCardStartGame, datasGame.timeSecondsNextBook, new List<model.PrototypeCard>());
+        game.AddObserver(this);
+        List<model.PrototypeCard>[] prototypeCards = new List<model.PrototypeCard>[2];
+        prototypeCards[0] = ConvertPrototypeCard(boardPlayerA.starterDeck.cards);
+        prototypeCards[1] = ConvertPrototypeCard(boardPlayerB.starterDeck.cards);
+        game.PrepareGame(5, 5, 
+            datasGame.durationSecondsGame,
+            datasGame.numberCardStartGame,
+            datasGame.timeSecondsNextBook, prototypeCards);
+        boards = new UBoard[]{boardPlayerA, boardPlayerB};
+    }
+
+    protected List<model.PrototypeCard> ConvertPrototypeCard(UPrototypeCard[] cards)
+    {
+        List<model.PrototypeCard> protos = new List<model.PrototypeCard>();     
+        foreach (var proto in cards)
+        {
+            protos.Add(new model.PrototypeCard(proto.name, "", new model.EffectNothing()));
+        }
+
+        return protos;
     }
 
     void Start()
     {
-        UCard[] cards = boardPlayerB.deck.GetComponentsInChildren<UCard>();
+        game.StartGame();
         StarterPickCard();
         globalCountDown.SetTimeOut(datasGame.durationSecondsGame);
         globalCountDown.StartCoundtDown();
@@ -61,14 +81,16 @@ public class GameManager : MonoBehaviour
     {
         for (var i = 0; i < datasGame.numberCardStartGame; i++)
         {
-            boardPlayerA.PickCard();
-            boardPlayerB.PickCard();
+            foreach (var board in game.Boards)
+            {
+                game.PickCard(board);
+            }
         }
     }
 
     public UBoard GetBoardOpponent(UCard card)
     {
-        if(card.boardPlayer.Faction == boardPlayerA.Faction)
+        if(card.Board.Faction == boardPlayerA.Faction)
         {
             return boardPlayerB;
         }
@@ -84,5 +106,10 @@ public class GameManager : MonoBehaviour
         position.y = 1f;
         Instantiate(PrefabsManager.Instance.particlesPrefab, position, card.transform.rotation, card.transform);
         card.transform.localScale = Vector3.zero;
+    }
+
+    public void UpdateBoardGame(object args)
+    {
+//        Debug.Log(args);
     }
 }

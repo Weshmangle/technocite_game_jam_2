@@ -10,7 +10,7 @@ namespace model
         {
             foreach (var observer in observers)
             {
-                observer.Update(data);
+                observer.UpdateBoardGame(data);
             }
         }
 

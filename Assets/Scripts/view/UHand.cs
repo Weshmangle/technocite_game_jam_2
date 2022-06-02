@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class UHand : MonoBehaviour
 {
-    public Transform area;
     public static int MAX_CARDS_HAND = 5;
 
     public List<UCard> cards = new List<UCard>();
-    public GameObject[] places;
+    public UEmplacementCard[] emplacements;
     public List<UCard> cardsAnimated = new List<UCard>();
+    public GameObject prefabEmplacement;
 
     void Update()
     {
@@ -19,10 +19,10 @@ public class UHand : MonoBehaviour
         {
             if(cardsAnimated.Contains(card))
             {
-                Vector3 position = places[card.index].transform.position - card.transform.position;
-                float angle = Quaternion.Angle(places[card.index].transform.rotation, card.transform.rotation);
+                Vector3 position = card.empplacement.transform.position - card.transform.position;
+                float angle = Quaternion.Angle(card.empplacement.transform.rotation, card.transform.rotation);
                 
-                 if(Mathf.Approximately(0.0f, angle))
+                if(Mathf.Approximately(0.0f, angle))
                 {
                     card.transform.rotation = Quaternion.identity;
                     cardsAnimated.Remove(card);
@@ -42,7 +42,7 @@ public class UHand : MonoBehaviour
         {
             if(cards[index] && !cardsAnimated.Contains(cards[index]))
             {
-                cards[index].transform.position = places[index].transform.position;
+                cards[index].transform.position = emplacements[index].transform.position;
             }
         }
     }
@@ -54,17 +54,19 @@ public class UHand : MonoBehaviour
 
     public void AppendCard(UCard card)
     {
-        if(cards.Count >= MAX_CARDS_HAND )
+        foreach (var emplacement in emplacements)
         {
-            throw new System.Exception("Your hand is full, you can add card");
+            if(emplacement.card == null)
+            {
+                card.transform.parent = emplacement.transform;
+                emplacement.card = card;
+                card.empplacement = emplacement;
+                cards.Add(card);
+                cardsAnimated.Add(card);
+                return;       
+            }
         }
-        else
-        {
-            card.index = cards.Count;
-            card.transform.parent = transform;
-            cards.Add(card);
-            cardsAnimated.Add(card);
-        }
+        throw new System.Exception("Your hand is full, you can add card");
     }
 
     public void Discard(UCard card)

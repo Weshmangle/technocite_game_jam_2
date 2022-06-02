@@ -31,7 +31,7 @@ public class UIManager : MonoBehaviour
             if(dilate < 0)
             {
                 currentText.fontMaterial.SetFloat(TMPro.ShaderUtilities.ID_FaceDilate, dilate + Time.deltaTime);
-                panel.color = new Color(panel.color.r, panel.color.g, panel.color.b, panel.color.a + Time.deltaTime * .75f);
+                panel.color = new Color(panel.color.r, panel.color.g, panel.color.b, panel.color.a + Time.deltaTime * .85f);
             }
         }
         else
