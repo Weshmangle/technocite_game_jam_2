@@ -5,6 +5,7 @@ public class UBoard : MonoBehaviour
 {
     public StarterDeck starterDeck;
     public PickDeck deck;
+    public model.Board board;
     public UHand hand;
     public UGround ground;
     public float currentTime = 0f;
@@ -13,13 +14,14 @@ public class UBoard : MonoBehaviour
     public GameObject canvasTextRelic;
     public TMPro.TextMeshProUGUI textRelic;
     public int countRelic;
+    public InputManager inputManager;
 
    void Start()
    {
         foreach (var protoCard in starterDeck.cards)
         {
-                UCard card = UCard.CreateCard(protoCard, deck.transform, new PropertiesUCard{board = this});
-                deck.AddCard(card);
+            UCard card = UCard.CreateCard(protoCard, deck.transform, new PropertiesUCard{board = this});
+            deck.AddCard(card);
         }
        
         Faction = starterDeck.name;
@@ -35,6 +37,8 @@ public class UBoard : MonoBehaviour
         deck.countDownNextCard.StartCoundtDown();
         deck.countDownNextBook.SetTimeOut(GameManager.Instance.datasGame.timeSecondsNextBook);
         deck.countDownNextBook.StartCoundtDown();
+
+        inputManager = InputManager.Instance;
    }
     
     void Update()
@@ -55,68 +59,63 @@ public class UBoard : MonoBehaviour
             deck.countDownNextBook.StartCoundtDown();
         }
 
-        if(InputManager.Instance.clicked)
+        MoveCardSelected();
+    }
+
+    public void MoveCardSelected()
+    {
+        RaycastHit raycastHit; 
+        Ray ray = Camera.main.ScreenPointToRay(InputManager.Instance.positionTouch);        
+        
+        if(Physics.Raycast(ray, out raycastHit, 100f) && cardSelected)
         {
-            RaycastHit raycastHit;
+            Vector3 position = cardSelected.transform.position;
+            position.x = ray.origin.x;
+            position.z = ray.origin.z;
+            cardSelected.transform.position = position;
+        }
+    }
 
-            Ray ray = Camera.main.ScreenPointToRay(InputManager.Instance.positionTouch);
-            
-            if(Physics.Raycast(ray, out raycastHit, 100f))
+
+    public void TouchDown()
+    {
+        RaycastHit raycastHit;
+
+        Ray ray = Camera.main.ScreenPointToRay(InputManager.Instance.positionTouch);
+        
+        Debug.DrawRay(ray.origin, ray.direction * 20, Color.red, 10);
+        
+        if(Physics.Raycast(ray, out raycastHit, 100f))
+        {
+            UCard card = raycastHit.transform.gameObject.GetComponent<UCard>();
+        
+            if(card)
             {
-                if(raycastHit.transform != null)
-                {
-                    Debug.DrawRay(ray.origin, ray.direction * 20, Color.red, 10);
+                cardSelected = card;
+                Vector3 localScale = cardSelected.transform.localScale;
+                localScale.x = localScale.y = localScale.z = 1.1f;
+                cardSelected.transform.localScale = localScale;
+                return;
+            }
 
-                    if(cardSelected)
-                    {
-                        Vector3 position = cardSelected.transform.position;
-                        position.x = ray.origin.x;
-                        position.z = ray.origin.z;
-                        cardSelected.transform.position = position;
-                    }
-                    else
-                    {
-                        UCard card = raycastHit.transform.gameObject.GetComponent<UCard>();
-                    
-                        if(!cardSelected && card)
-                        {
-                            if(card.Board.name == name)
-                            {
-                                if(cardSelected)
-                                {
-                                    cardSelected.transform.localScale = Vector3.one;
-                                    cardSelected = null;
-                                }
-                                else
-                                {
-                                    cardSelected = card;
-                                    cardSelected.transform.localScale *= 1.1f;
-                                    
-                                    if(card.Prototype.typeCard == TypeCard.RELIC)
-                                    {
-                                        PlayRelicSelected();
-                                    }
-                                }   
-                            }
-                        }
-                        else
-                        {
-                            UEmplacementCard placeCardGround = raycastHit.transform.gameObject.GetComponent<UEmplacementCard>();
-                            
-                            if(placeCardGround)
-                            {
-                                if(placeCardGround.board.name == name && cardSelected)
-                                {
-                                    PlaydCardSelected(placeCardGround);
-                                    cardSelected.PlayCard();
-                                    cardSelected = null;
-                                }
-                            }
-                        }
-                    }
-                }
+            UEmplacementCard placeCardGround = raycastHit.transform.gameObject.GetComponent<UEmplacementCard>();
+            
+            if(placeCardGround)
+            {
+                PlaydCardSelected(placeCardGround);
+                cardSelected.PlayCard();
+                cardSelected = null;
             }
         }
+    }
+
+    public void TouchUp()
+    {
+        
+        Vector3 localScale = cardSelected.transform.localScale;
+        localScale.x = localScale.y = localScale.z = 1.0f;
+        cardSelected.transform.localScale = localScale;
+        cardSelected = null;
     }
 
     public void PlaydCardSelected(UEmplacementCard place)

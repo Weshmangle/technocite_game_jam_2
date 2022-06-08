@@ -83,8 +83,10 @@ public class GameManager : MonoBehaviour, model.Observer
         {
             foreach (var board in game.Boards)
             {
-                game.PickCard(board);
+                //game.PickCard(board);
             }
+            boardPlayerA.PickCard();
+            boardPlayerB.PickCard();
         }
     }
 
@@ -110,6 +112,6 @@ public class GameManager : MonoBehaviour, model.Observer
 
     public void UpdateBoardGame(object args)
     {
-//        Debug.Log(args);
+        Debug.Log(args);
     }
 }

@@ -59,10 +59,11 @@ public class UCard : MonoBehaviour
         countDown.StartCoundtDown();
     }
 
-    public static UCard CreateCard(UPrototypeCard proto, Transform transform, PropertiesUCard propertiesUCard = null)
+    public static UCard CreateCard(UPrototypeCard proto, Transform transform, PropertiesUCard propertiesUCard)
     {
         GameObject instance = Instantiate(PrefabsManager.Instance.prefabCard, transform);
         UCard uCard = instance.GetComponent<UCard>();
+        uCard.proto = proto;
         
         if(propertiesUCard is not null)
         {

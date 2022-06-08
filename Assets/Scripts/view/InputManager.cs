@@ -12,7 +12,6 @@ public class InputManager : MonoBehaviour
     public int stateSpeaker = 0;
 
     public Vector2 positionTouch;
-    public bool clicked;
 
     private void Awake()
     {
@@ -46,19 +45,28 @@ public class InputManager : MonoBehaviour
         
         if(position.y > Screen.height/2)
         {
-            Debug.Log("Player 1 touch" + position.x + ", " + position.y);
+            //Debug.Log("Player B touch" + position.x + ", " + position.y);
+            GameManager.Instance.boardPlayerB.TouchDown();
         }
         else
         {
-            Debug.Log("Player 2 touch" + position.x + ", " + position.y);
+            //Debug.Log("Player A touch" + position.x + ", " + position.y);
+            GameManager.Instance.boardPlayerA.TouchDown();
         }
-
-        clicked = true;
     }
     
     private void EndTouch(InputAction.CallbackContext context)
     {
-        clicked = false;
-        Debug.Log("end");
+        var position = touchControls.Touch.TouchPosition.ReadValue<Vector2>();
+        if(position.y > Screen.height/2)
+        {
+            //Debug.Log("Player B release");
+            GameManager.Instance.boardPlayerB.TouchUp();
+        }
+        else
+        {
+            Debug.Log("Player A release");
+            GameManager.Instance.boardPlayerA.TouchUp();
+        }
     }
 }
