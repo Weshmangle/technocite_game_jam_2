@@ -36,7 +36,7 @@ namespace model
             this.timeNextCard = timeNextCard;
             this.timeNextBook = timeNextBook;
 
-            Notify(new {info = "Game prepared", source = this});
+            Notify(new {type = TypeAction.GAME_READY, args = new {}});
         }
 
         public void StartGame()
@@ -62,12 +62,12 @@ namespace model
                         if(card.currentEffect.IsComplete())
                         {
                             card.NextEffect();
-                            Notify(new {info = "Next effect", source = card});
+                            Notify(new {type = TypeAction.NEXT_EFFECT, args = card});
                         }
                         else
                         {
                             card.currentEffect.Progress(time, card, "");
-                            Notify(new {info = "effect on progress", source = card});
+                            Notify(new {type = TypeAction.PROGRESS_EFFECT, args = card});
                         }
                     }
                 }                

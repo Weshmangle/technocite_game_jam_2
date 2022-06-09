@@ -14,6 +14,14 @@ namespace model
             }
         }
 
+        public void NotifyError(object data)
+        {
+            foreach (var observer in observers)
+            {
+                observer.UpdateBoardGame(data);
+            }
+        }
+
         public void AddObserver(Observer obs)
         {
             observers.Add(obs);

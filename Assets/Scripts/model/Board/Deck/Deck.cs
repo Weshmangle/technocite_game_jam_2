@@ -31,6 +31,11 @@ namespace model
                 cards.Insert(randomIndex + 1, card);
             }*/
         }
+
+        public List<Card> Cards
+        {
+            get {return new List<Card>(this.cards);}
+        }
         
         public Card PickCardOnTop()
         {

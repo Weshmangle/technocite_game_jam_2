@@ -23,7 +23,7 @@ namespace model
         {
             Card card = deck.PickCardOnTop();
             hand.AddCard(card);
-            Notify(new {info = "Pick card", source = this});
+            Notify(new {type = TypeAction.ADD_CARD_HAND, args = card});
             return card;
         }
 
@@ -31,7 +31,7 @@ namespace model
         {
             Card card = deck.PickRandomCard();
             hand.AddCard(card);
-            Notify(new {info = "Pick random card", source = this});
+            Notify(new {type = TypeAction.ADD_CARD_HAND, args = card});
             return card;
         }
 
@@ -39,7 +39,7 @@ namespace model
         {
             Card card = deck.PickSpecificCard(prototypeCard);
             hand.AddCard(card);
-            Notify(new {info = "Pick specific card", source = this});
+            Notify(new {type = TypeAction.ADD_CARD_HAND, args = card});
             return card;
         }
 
@@ -75,7 +75,7 @@ namespace model
 
         public void UpdateBoardGame(object args)
         {
-            Notify(args);
+            Notify(new {type = TypeAction.UPDATE_GAME, args = args});
         }
 
         #endregion

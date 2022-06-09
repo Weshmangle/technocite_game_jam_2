@@ -5,4 +5,5 @@ public class StarterDeck : ScriptableObject
 {
     public UPrototypeCard[] cards;
     public string faction;
+    public Sprite backCard;
 }

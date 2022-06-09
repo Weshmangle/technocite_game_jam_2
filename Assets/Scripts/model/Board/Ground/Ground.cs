@@ -32,7 +32,7 @@ namespace model
             
             cards.Add(card);
             emplacements[emplacement.index].card = card;
-            Notify(new {info = "Add card", source = this});
+            Notify(new {type = TypeAction.ADD_CARD_GROUND, args = emplacement});
         }
 
         public void RemoveCard(GroundEmplacement emplacement)
@@ -44,7 +44,7 @@ namespace model
             
             cards.Remove(emplacements[emplacement.index].card);
             emplacements[emplacement.index].card = null;
-            Notify(new {info = "Remove card", source = this});
+            Notify(new {type = TypeAction.REMOVE_CARD_GROUND, args = emplacement});
         }
 
         public List<GroundEmplacement> Emplacements()

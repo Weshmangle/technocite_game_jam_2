@@ -34,3 +34,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1644f60223d7b9e44885f540f2fddd97, type: 2}
   - {fileID: 11400000, guid: 07e19120ca409b641b69818bc5d31c1b, type: 2}
   faction: Miskatonic Debug
+  backCard: {fileID: 21300000, guid: 121ff12aef7ce3740b95a9bc49d853a0, type: 3}

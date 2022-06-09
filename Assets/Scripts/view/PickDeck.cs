@@ -24,7 +24,8 @@ public class PickDeck : MonoBehaviour
 
     void Update()
     {
-        empty.active = cards.Count == 0;
+        empty.SetActive(cards.Count == 0);
+        //empty.active = cards.Count == 0;
     }
 
     public UCard PickSpecificCard(UPrototypeCard card)

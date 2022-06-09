@@ -13,8 +13,6 @@ public class UHand : MonoBehaviour
 
     void Update()
     {
-        placeCards();
-        
         foreach (var card in cards)
         {
             if(cardsAnimated.Contains(card))
@@ -26,6 +24,13 @@ public class UHand : MonoBehaviour
                 {
                     card.transform.rotation = Quaternion.identity;
                     cardsAnimated.Remove(card);
+                    foreach (var emplacement in emplacements)
+                    {
+                        if(emplacement.card == card)
+                        {
+                            card.transform.position = emplacement.transform.position;
+                        }
+                    }
                 }
                 else
                 {
@@ -33,17 +38,6 @@ public class UHand : MonoBehaviour
                     card.transform.Rotate(new Vector3(0, 0, angle) * Time.deltaTime);
                 }
             }            
-        }
-    }
-
-    public void placeCards()
-    {
-        for (int index = 0; index < cards.Count; index++)
-        {
-            if(cards[index] && !cardsAnimated.Contains(cards[index]))
-            {
-                cards[index].transform.position = emplacements[index].transform.position;
-            }
         }
     }
 

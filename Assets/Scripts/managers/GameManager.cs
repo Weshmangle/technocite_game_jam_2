@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour, model.Observer
     public CountDown globalCountDown;
     public model.Game game;
     protected bool gameIsOver;
-    protected UBoard[] boards;
 
     private void Awake()
     {
@@ -21,29 +20,19 @@ public class GameManager : MonoBehaviour, model.Observer
         boardPlayerB.canvasTextRelic.gameObject.SetActive(true);
         game = new model.Game();
         game.AddObserver(this);
-        List<model.PrototypeCard>[] prototypeCards = new List<model.PrototypeCard>[2];
-        prototypeCards[0] = ConvertPrototypeCard(boardPlayerA.starterDeck.cards);
-        prototypeCards[1] = ConvertPrototypeCard(boardPlayerB.starterDeck.cards);
+        
+        List<model.PrototypeCard>[] prototypeCards = UPrototypeCard.ToListPrototypeModel(boardPlayerA.starterDeck.cards, boardPlayerB.starterDeck.cards);
+
         game.PrepareGame(5, 5, 
             datasGame.durationSecondsGame,
             datasGame.numberCardStartGame,
             datasGame.timeSecondsNextBook, prototypeCards);
-        boards = new UBoard[]{boardPlayerA, boardPlayerB};
-    }
-
-    protected List<model.PrototypeCard> ConvertPrototypeCard(UPrototypeCard[] cards)
-    {
-        List<model.PrototypeCard> protos = new List<model.PrototypeCard>();     
-        foreach (var proto in cards)
-        {
-            protos.Add(new model.PrototypeCard(proto.name, "", new model.EffectNothing()));
-        }
-
-        return protos;
     }
 
     void Start()
     {
+        boardPlayerA.Init(game.Board(0));
+        boardPlayerB.Init(game.Board(1));
         game.StartGame();
         StarterPickCard();
         globalCountDown.SetTimeOut(datasGame.durationSecondsGame);
@@ -113,5 +102,10 @@ public class GameManager : MonoBehaviour, model.Observer
     public void UpdateBoardGame(object args)
     {
         Debug.Log(args);
+    }
+
+    public UBoard[] boards
+    {
+        get {return new UBoard[]{boardPlayerA, boardPlayerB};}
     }
 }

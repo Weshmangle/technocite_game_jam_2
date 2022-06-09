@@ -161,6 +161,7 @@ MonoBehaviour:
   canvasTextRelic: {fileID: 2678884594496744415}
   textRelic: {fileID: 0}
   countRelic: 0
+  inputManager: {fileID: 0}
 --- !u!1 &6959493663032022257
 GameObject:
   m_ObjectHideFlags: 0
@@ -262,7 +263,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1864811828909878098, guid: 200b0214a1a30da4282dd1061b078a04, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.2
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1864811828909878098, guid: 200b0214a1a30da4282dd1061b078a04, type: 3}
       propertyPath: m_LocalPosition.z
@@ -351,7 +352,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1864811828909878098, guid: b2b73414b9218944b928ef8a8b31aa0c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.2
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1864811828909878098, guid: b2b73414b9218944b928ef8a8b31aa0c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -389,14 +390,26 @@ PrefabInstance:
       propertyPath: board
       value: 
       objectReference: {fileID: 2740608847053508691}
+    - target: {fileID: 2215976368440533576, guid: b2b73414b9218944b928ef8a8b31aa0c, type: 3}
+      propertyPath: ground
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2540648279606532656, guid: b2b73414b9218944b928ef8a8b31aa0c, type: 3}
       propertyPath: board
       value: 
       objectReference: {fileID: 2740608847053508691}
+    - target: {fileID: 2540648279606532656, guid: b2b73414b9218944b928ef8a8b31aa0c, type: 3}
+      propertyPath: ground
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4031369682626488015, guid: b2b73414b9218944b928ef8a8b31aa0c, type: 3}
       propertyPath: board
       value: 
       objectReference: {fileID: 2740608847053508691}
+    - target: {fileID: 4031369682626488015, guid: b2b73414b9218944b928ef8a8b31aa0c, type: 3}
+      propertyPath: ground
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4055373201873933881, guid: b2b73414b9218944b928ef8a8b31aa0c, type: 3}
       propertyPath: m_Name
       value: GroundCards
@@ -409,10 +422,18 @@ PrefabInstance:
       propertyPath: board
       value: 
       objectReference: {fileID: 2740608847053508691}
+    - target: {fileID: 5033240176005513517, guid: b2b73414b9218944b928ef8a8b31aa0c, type: 3}
+      propertyPath: ground
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5322509693782217610, guid: b2b73414b9218944b928ef8a8b31aa0c, type: 3}
       propertyPath: board
       value: 
       objectReference: {fileID: 2740608847053508691}
+    - target: {fileID: 5322509693782217610, guid: b2b73414b9218944b928ef8a8b31aa0c, type: 3}
+      propertyPath: ground
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2b73414b9218944b928ef8a8b31aa0c, type: 3}
 --- !u!114 &1326712405597380261 stripped

@@ -7,16 +7,15 @@ public class PropertiesUCard
 {
     public UBoard board;
     public model.Card card;
-    public GameObject backcard;
     public GameObject frontcard;
 }
 
 public class UCard : MonoBehaviour
 {
     protected UBoard boardPlayer;
-    protected model.Card card;
+    public model.Card card;
     protected CountDown countDown;
-    protected GameObject frontcard;
+    protected Sprite frontcard;
     protected GameObject backcard;
     protected int index;
     protected bool animeAttak = false;
@@ -36,15 +35,6 @@ public class UCard : MonoBehaviour
     public void PlayCard()
     {
         card.emplacement.board.PlayCard(card, card.emplacement);
-        throw new NotImplementedException("TO DO");
-    }
-
-    public void SetProps(UBoard board, model.Card card, GameObject backcard, GameObject frontcard)
-    {
-        this.boardPlayer = board;
-        this.card = card;
-        this.backcard = backcard; 
-        this.frontcard = frontcard; 
     }
 
     public void AnimeAttak()
@@ -61,6 +51,7 @@ public class UCard : MonoBehaviour
 
     public static UCard CreateCard(UPrototypeCard proto, Transform transform, PropertiesUCard propertiesUCard)
     {
+        PrefabsManager instance1 = PrefabsManager.Instance;
         GameObject instance = Instantiate(PrefabsManager.Instance.prefabCard, transform);
         UCard uCard = instance.GetComponent<UCard>();
         uCard.proto = proto;
@@ -68,9 +59,8 @@ public class UCard : MonoBehaviour
         if(propertiesUCard is not null)
         {
             uCard.boardPlayer = propertiesUCard.board;
-            uCard.card = propertiesUCard.card; 
-            uCard.backcard = propertiesUCard.backcard;
-            uCard.frontcard = propertiesUCard.frontcard;
+            uCard.card = propertiesUCard.card;
+            uCard.frontcard = proto.sprite;
         }
 
         return uCard;
