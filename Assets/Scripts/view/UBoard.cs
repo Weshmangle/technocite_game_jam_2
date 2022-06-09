@@ -49,7 +49,7 @@ public class UBoard : MonoBehaviour
         {
             if(!hand.HandIsFull() && !deck.isEmpty())
             {
-                PickCard();
+                PickCard(board.PickCard());
             }
             deck.countDownNextCard.SetTimeOut(GameManager.Instance.datasGame.numberCardStartGame);
             deck.countDownNextCard.StartCoundtDown();
@@ -135,9 +135,9 @@ public class UBoard : MonoBehaviour
     public void PlaydCardSelected(UEmplacementCard place)
     {
         board.PlayCard(cardSelected.card, board.GetGround().Emplacements()[place.index]);
-        // hand.cards.Remove(cardSelected);
-        // ground.AppendCard(place.index, cardSelected);
-        // cardSelected = null;
+        hand.cards.Remove(cardSelected);
+        ground.AppendCard(place.index, cardSelected);
+        cardSelected = null;
     }
 
     public void PlayRelicSelected()
@@ -149,10 +149,11 @@ public class UBoard : MonoBehaviour
         cardSelected = null;
     }
 
-    public UCard PickCard()
+    public UCard PickCard(model.Card card)
     {
-        UCard card = deck.PickCardOnTop();
-        hand.AppendCard(card);
-        return card;
+        UCard uCard = deck.PickCardOnTop();
+        uCard.card = card;
+        hand.AppendCard(uCard);
+        return uCard;
     }
 }

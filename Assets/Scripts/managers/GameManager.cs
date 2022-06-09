@@ -70,12 +70,8 @@ public class GameManager : MonoBehaviour, model.Observer
     {
         for (var i = 0; i < datasGame.numberCardStartGame; i++)
         {
-            foreach (var board in game.Boards)
-            {
-                //game.PickCard(board);
-            }
-            boardPlayerA.PickCard();
-            boardPlayerB.PickCard();
+            boardPlayerA.PickCard(game.Board(0).PickCard());
+            boardPlayerB.PickCard(game.Board(1).PickCard());
         }
     }
 

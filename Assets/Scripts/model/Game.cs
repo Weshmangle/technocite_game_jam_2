@@ -78,13 +78,13 @@ namespace model
             }
         }
 
-        public void PickCard(Board board)
+        public Card PickCard(Board board)
         {
             if(boards.Contains(board))
             {
                 if(gameIsRunning)
                 {
-                    board.PickCard();
+                    return board.PickCard();
                 }
                 else
                 {
