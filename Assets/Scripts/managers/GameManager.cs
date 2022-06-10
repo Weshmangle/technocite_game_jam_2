@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour, model.Observer
     [SerializeField] public UBoard boardPlayerA;
     [SerializeField] public UBoard boardPlayerB;
     public CountDown globalCountDown;
+    public CountDown nextCardCountDown;
+    public CountDown nextBookCountDown;
+    public Gauge gauge;
     public model.Game game;
     protected bool gameIsOver;
 
@@ -17,7 +20,7 @@ public class GameManager : MonoBehaviour, model.Observer
     {
         Instance = this;
         gameIsOver = false;
-        boardPlayerB.canvasTextRelic.gameObject.SetActive(true);
+        //boardPlayerB.canvasTextRelic.gameObject.SetActive(true);
         game = new model.Game();
         game.AddObserver(this);
         
@@ -35,8 +38,7 @@ public class GameManager : MonoBehaviour, model.Observer
         boardPlayerB.Init(game.Board(1));
         game.StartGame();
         StarterPickCard();
-        globalCountDown.SetTimeOut(datasGame.durationSecondsGame);
-        globalCountDown.StartCoundtDown();
+        globalCountDown.Start(datasGame.durationSecondsGame);
     }
 
     void Update()
@@ -77,14 +79,15 @@ public class GameManager : MonoBehaviour, model.Observer
 
     public UBoard GetBoardOpponent(UCard card)
     {
-        if(card.Board.Faction == boardPlayerA.Faction)
+        /*if(card.Board.Faction == boardPlayerA.Faction)
         {
             return boardPlayerB;
         }
         else
         {
             return boardPlayerA;
-        }
+        }*/
+        return boardPlayerA;
     }
 
     public void AddParticlesToCard(UCard card)
@@ -95,9 +98,14 @@ public class GameManager : MonoBehaviour, model.Observer
         card.transform.localScale = Vector3.zero;
     }
 
-    public void UpdateBoardGame(object args)
+    public void UpdateSuccess(object args)
     {
         Debug.Log(args);
+    }
+
+    public void UpdateError(object args)
+    {
+        throw new System.NotImplementedException();
     }
 
     public UBoard[] boards

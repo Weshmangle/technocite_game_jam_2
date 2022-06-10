@@ -2,19 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UHand : MonoBehaviour
+public class UHand : MonoBehaviour, model.Observer
 {
-    public static int MAX_CARDS_HAND = 5;
-
-    public List<UCard> cards = new List<UCard>();
     public UEmplacementCard[] emplacements;
     public List<UCard> cardsAnimated = new List<UCard>();
-    public GameObject prefabEmplacement;
+    protected model.Hand hand;
 
     void Update()
     {
-        foreach (var card in cards)
+        foreach (var emplacement in emplacements)
         {
+            UCard card = emplacement.card;
             if(cardsAnimated.Contains(card))
             {
                 Vector3 position = card.empplacement.transform.position - card.transform.position;
@@ -24,13 +22,7 @@ public class UHand : MonoBehaviour
                 {
                     card.transform.rotation = Quaternion.identity;
                     cardsAnimated.Remove(card);
-                    foreach (var emplacement in emplacements)
-                    {
-                        if(emplacement.card == card)
-                        {
-                            card.transform.position = emplacement.transform.position;
-                        }
-                    }
+                    card.transform.position = emplacement.transform.position;
                 }
                 else
                 {
@@ -41,9 +33,15 @@ public class UHand : MonoBehaviour
         }
     }
 
+    public void SetHand(model.Hand hand)
+    {
+        this.hand = hand;
+        hand.AddObserver(this);
+    }
+
     public bool HandIsFull()
     {
-        return cards.Count >= MAX_CARDS_HAND;
+        return hand.HandIsFull();
     }
 
     public void AppendCard(UCard card)
@@ -55,9 +53,8 @@ public class UHand : MonoBehaviour
                 card.transform.parent = emplacement.transform;
                 emplacement.card = card;
                 card.empplacement = emplacement;
-                cards.Add(card);
                 cardsAnimated.Add(card);
-                return;       
+                return;
             }
         }
         throw new System.Exception("Your hand is full, you can add card");
@@ -65,20 +62,16 @@ public class UHand : MonoBehaviour
 
     public void Discard(UCard card)
     {
-        if(cards.Count == 0)
-        {
-            throw new System.Exception("Hand is empty, cant discard");
-        }
-        if(!cards.Remove(card))
-        {
-            throw new System.Exception("Cant discard card not in hand");
-        }
+        hand.RemoveCard(card.card);
     }
 
-    public UCard DiscardRandom()
+    public void UpdateError(object args)
     {
-        UCard card = cards[Random.Range(0, cards.Count)];
-        Discard(card);
-        return card;
+        
+    }
+
+    public void UpdateSuccess(object args)
+    {
+        
     }
 }

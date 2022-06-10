@@ -4,8 +4,8 @@ using UnityEngine;
 public class PickDeck : MonoBehaviour
 {
     public List<UCard> cards = new List<UCard>();
-    [SerializeField] public CountDown countDownNextCard;
-    [SerializeField] public CountDown countDownNextBook;
+    [SerializeField] public Gauge countDownNextCard;
+    [SerializeField] public Gauge countDownNextBook;
     [SerializeField] public GameObject empty;
 
     public UCard PickCardOnTop()
@@ -25,7 +25,6 @@ public class PickDeck : MonoBehaviour
     void Update()
     {
         empty.SetActive(cards.Count == 0);
-        //empty.active = cards.Count == 0;
     }
 
     public UCard PickSpecificCard(UPrototypeCard card)

@@ -73,9 +73,14 @@ namespace model
             return deck;
         }
 
-        public void UpdateBoardGame(object args)
+        public void UpdateSuccess(object args)
         {
             Notify(new {type = TypeAction.UPDATE_GAME, args = args});
+        }
+
+        public void UpdateError(object args)
+        {
+            throw new System.NotImplementedException();
         }
 
         #endregion

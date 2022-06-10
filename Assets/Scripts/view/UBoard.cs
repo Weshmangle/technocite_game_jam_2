@@ -2,23 +2,19 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UBoard : MonoBehaviour
+public class UBoard : MonoBehaviour, model.Observer
 {
     public StarterDeck starterDeck;
     public PickDeck deck;
     public model.Board board;
-    public UHand hand;
+    public UHand uHand;
     public UGround ground;
-    public float currentTime = 0f;
     public UCard cardSelected;
-    public string Faction;
-    public GameObject canvasTextRelic;
-    public TMPro.TextMeshProUGUI textRelic;
-    public int countRelic;
 
    public void Init(model.Board board)
    {
        this.board = board;
+       this.uHand.SetHand(board.GetHand());
        for (int index = 0; index < board.GetDeck().Cards.Count; index++)
        {
             model.Card card = board.GetDeck().Cards[index];
@@ -27,8 +23,6 @@ public class UBoard : MonoBehaviour
             UCard uCard = UCard.CreateCard(prottype, deck.transform, new PropertiesUCard{board = this, card = card});
             deck.AddCard(uCard);
        }
-       
-        Faction = starterDeck.name;
 
         for (int index = 0; index < ground.emplacements.Length; index++)
         {
@@ -37,28 +31,26 @@ public class UBoard : MonoBehaviour
             placeCardGround.index = index;
         }
         
-        deck.countDownNextCard.SetTimeOut(GameManager.Instance.datasGame.numberCardStartGame);
-        deck.countDownNextCard.StartCoundtDown();
-        deck.countDownNextBook.SetTimeOut(GameManager.Instance.datasGame.timeSecondsNextBook);
-        deck.countDownNextBook.StartCoundtDown();
+        // deck.countDownNextCard.SetTimeOut(GameManager.Instance.datasGame.numberCardStartGame);
+        // deck.countDownNextCard.StartCoundtDown();
+        // deck.countDownNextBook.SetTimeOut(GameManager.Instance.datasGame.timeSecondsNextBook);
+        // deck.countDownNextBook.StartCoundtDown();
    }
     
     void Update()
     {
-        if(deck.countDownNextCard.finish)
+        if(GameManager.Instance.nextCardCountDown.finish)
         {
-            if(!hand.HandIsFull() && !deck.isEmpty())
+            if(!uHand.HandIsFull() && !deck.isEmpty())
             {
                 PickCard(board.PickCard());
             }
-            deck.countDownNextCard.SetTimeOut(GameManager.Instance.datasGame.numberCardStartGame);
-            deck.countDownNextCard.StartCoundtDown();
+            GameManager.Instance.nextCardCountDown.Start(GameManager.Instance.datasGame.numberCardStartGame);
         }
 
-        if(deck.countDownNextBook.finish)
+        if(GameManager.Instance.nextBookCountDown.finish)
         {
-            deck.countDownNextBook.SetTimeOut(GameManager.Instance.datasGame.timeSecondsNextBook);
-            deck.countDownNextBook.StartCoundtDown();
+            GameManager.Instance.nextBookCountDown.Start(GameManager.Instance.datasGame.timeSecondsNextBook);
         }
 
         MoveCardSelected();
@@ -135,25 +127,36 @@ public class UBoard : MonoBehaviour
     public void PlaydCardSelected(UEmplacementCard place)
     {
         board.PlayCard(cardSelected.card, board.GetGround().Emplacements()[place.index]);
-        hand.cards.Remove(cardSelected);
+        uHand.Discard(cardSelected);
         ground.AppendCard(place.index, cardSelected);
         cardSelected = null;
     }
 
     public void PlayRelicSelected()
     {
-        hand.cards.Remove(cardSelected);
+        /*return;
+        hand.Discard(cardSelected);
         countRelic++;
         textRelic.text = $" {countRelic} / 10";
         Destroy(cardSelected.gameObject);
-        cardSelected = null;
+        cardSelected = null;*/
     }
 
     public UCard PickCard(model.Card card)
     {
         UCard uCard = deck.PickCardOnTop();
         uCard.card = card;
-        hand.AppendCard(uCard);
+        uHand.AppendCard(uCard);
         return uCard;
+    }
+
+    public void UpdateSuccess(object args)
+    {
+        Debug.Log(args);
+    }
+
+    public void UpdateError(object args)
+    {
+        throw new NotImplementedException();
     }
 }

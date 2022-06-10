@@ -2,6 +2,7 @@ namespace model
 {
     public interface Observer
     {
-        public void UpdateBoardGame(object args);
+        public void UpdateSuccess(object args);
+        public void UpdateError(object args);
     }
 }

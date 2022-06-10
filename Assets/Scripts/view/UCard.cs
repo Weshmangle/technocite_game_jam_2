@@ -14,7 +14,7 @@ public class UCard : MonoBehaviour
 {
     protected UBoard boardPlayer;
     public model.Card card;
-    protected CountDown countDown;
+    protected Gauge countDown;
     protected Sprite frontcard;
     protected GameObject backcard;
     protected int index;
@@ -45,8 +45,8 @@ public class UCard : MonoBehaviour
     public void StartTimer(float startTime)
     {
         countDown.gameObject.SetActive(true);
-        countDown.SetTimeOut(startTime);
-        countDown.StartCoundtDown();
+        // countDown.SetTimeOut(startTime);
+        // countDown.StartCoundtDown();
     }
 
     public static UCard CreateCard(UPrototypeCard proto, Transform transform, PropertiesUCard propertiesUCard)

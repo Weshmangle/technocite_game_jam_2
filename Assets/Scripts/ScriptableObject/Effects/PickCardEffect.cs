@@ -11,11 +11,11 @@ public class PickCardEffect : EffectSO
     {
         if(card)
         {
-            card.Board.hand.AppendCard(card.Board.deck.PickSpecificCard(specificCard));
+            card.Board.uHand.AppendCard(card.Board.deck.PickSpecificCard(specificCard));
         }
         else
         {
-            card.Board.hand.AppendCard(card.Board.deck.PickCardOnTop());
+            card.Board.uHand.AppendCard(card.Board.deck.PickCardOnTop());
         }
     }
 }

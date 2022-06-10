@@ -11,4 +11,10 @@ namespace model
         NEXT_EFFECT,
         PROGRESS_EFFECT,
     }
+
+    public enum TypeError
+    {
+        HAND_FULL,
+        CARD_NOT_HAND
+    }
 }

@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 
 namespace model
-{    
-    public class Hand
+{
+    public class Hand : Observable
     {
         #region PUBLIC
         public Hand(int maxCardsHand)
@@ -14,7 +14,7 @@ namespace model
         {
             if(cards.Count >= maxCardsHand)
             {
-                throw new System.Exception("Can add Card in fullhand");
+                NotifyError(new {type = TypeError.HAND_FULL, args = new {TypeAction.ADD_CARD_HAND}});
             }
             else
             {
@@ -26,8 +26,13 @@ namespace model
         {
             if(!cards.Remove(card))
             {
-                throw new System.Exception("Can't remove Card not present in Hand");
+                NotifyError(new {type = TypeError.CARD_NOT_HAND, args = new {TypeAction.REMOVE_CARD_HAND}});
             }
+        }
+
+        public bool HandIsFull()
+        {
+            return cards.Count == model.Game.MAX_CARDS_HAND;
         }
 
         public List<Card> Cards()

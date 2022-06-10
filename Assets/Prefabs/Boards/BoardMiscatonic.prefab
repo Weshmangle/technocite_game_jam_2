@@ -289,15 +289,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   starterDeck: {fileID: 0}
   deck: {fileID: 2535605061156333517}
-  hand: {fileID: 2734367755871747356}
+  uHand: {fileID: 2734367755871747356}
   ground: {fileID: 1326712405597380261}
-  currentTime: 0
   cardSelected: {fileID: 0}
-  Faction: 
-  canvasTextRelic: {fileID: 2678884594496744415}
-  textRelic: {fileID: 805393300372096853}
-  countRelic: 0
-  inputManager: {fileID: 0}
 --- !u!1 &8703275789327420560
 GameObject:
   m_ObjectHideFlags: 0

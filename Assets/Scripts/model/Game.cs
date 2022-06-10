@@ -15,6 +15,7 @@ namespace model
         protected float timeNextBook = 20;
         protected float cardCountStart = 3;
         protected bool gameIsRunning = false;
+        public static int MAX_CARDS_HAND = 0;
 
         public void PrepareGame(int maxCardsHand, int countEmplacementsGround, float durationGame, float timeNextCard, float timeNextBook, params List<PrototypeCard>[] decks)
         {
@@ -35,6 +36,7 @@ namespace model
             this.durationGame = durationGame;
             this.timeNextCard = timeNextCard;
             this.timeNextBook = timeNextBook;
+            MAX_CARDS_HAND = maxCardsHand;
 
             Notify(new {type = TypeAction.GAME_READY, args = new {}});
         }
@@ -150,9 +152,14 @@ namespace model
             return this.gameIsRunning;
         }
 
-        public void UpdateBoardGame(object args)
+        public void UpdateSuccess(object args)
         {
             Notify(args);
+        }
+
+        public void UpdateError(object args)
+        {
+            throw new NotImplementedException();
         }
     }
 }
