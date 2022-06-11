@@ -1144,6 +1144,9 @@ GameObject:
   - component: {fileID: 1693867123}
   - component: {fileID: 1693867125}
   - component: {fileID: 1693867126}
+  - component: {fileID: 1693867129}
+  - component: {fileID: 1693867128}
+  - component: {fileID: 1693867127}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1166,7 +1169,11 @@ MonoBehaviour:
   datasGame: {fileID: 11400000, guid: 6b32bc4ef14ebde4c9cb4fc2d0770e0f, type: 2}
   boardPlayerA: {fileID: 178490191}
   boardPlayerB: {fileID: 1344638080}
-  globalCountDown: {fileID: 583458381}
+  globalCountDown: {fileID: 1693867129}
+  nextCardCountDown: {fileID: 1693867128}
+  nextBookCountDown: {fileID: 1693867127}
+  gaugeSummonCtulu: {fileID: 583458381}
+  gaugeRelics: {fileID: 1997392771}
 --- !u!4 &1693867124
 Transform:
   m_ObjectHideFlags: 0
@@ -1215,6 +1222,51 @@ MonoBehaviour:
   prefabCard: {fileID: 7019247091741480033, guid: f5ad0b6588f5ec84289015c975aa1233, type: 3}
   particlesPrefab: {fileID: 4534457433612963349, guid: f504a0d11c1571c479e9e62f1d7b1b20, type: 3}
   prefabUEmplacement: {fileID: 1661785120651229061, guid: 71208152419898345ba27dfe4113eb07, type: 3}
+--- !u!114 &1693867127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693867122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97cf70a93aefad04285eb4ef15f3e92a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxTime: 0
+  currentTime: -1
+  started: 0
+--- !u!114 &1693867128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693867122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97cf70a93aefad04285eb4ef15f3e92a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxTime: 0
+  currentTime: -1
+  started: 0
+--- !u!114 &1693867129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693867122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97cf70a93aefad04285eb4ef15f3e92a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxTime: 0
+  currentTime: -1
+  started: 0
 --- !u!1001 &1785146048
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1296,7 +1348,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3616887367966703346, guid: 7841780a84c74b048b2a5cdc09454c67, type: 3}
       propertyPath: m_Name
-      value: CountDownGlobal
+      value: GaugeCtulu
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7841780a84c74b048b2a5cdc09454c67, type: 3}
@@ -1581,7 +1633,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3616887367966703346, guid: 6091b9305640c1f48ad7efc86d5c6c3e, type: 3}
       propertyPath: m_Name
-      value: CountDownMiscatonicRelic
+      value: GaugeRelics
       objectReference: {fileID: 0}
     - target: {fileID: 8653982227051838829, guid: 6091b9305640c1f48ad7efc86d5c6c3e, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1598,3 +1650,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 653628857732438814, guid: 6091b9305640c1f48ad7efc86d5c6c3e, type: 3}
   m_PrefabInstance: {fileID: 1997392769}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1997392771 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5431386669678672306, guid: 6091b9305640c1f48ad7efc86d5c6c3e, type: 3}
+  m_PrefabInstance: {fileID: 1997392769}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 175ed80756015c842843c6045a3ba2fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

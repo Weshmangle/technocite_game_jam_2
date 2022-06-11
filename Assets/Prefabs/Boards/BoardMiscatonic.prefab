@@ -292,6 +292,8 @@ MonoBehaviour:
   uHand: {fileID: 2734367755871747356}
   ground: {fileID: 1326712405597380261}
   cardSelected: {fileID: 0}
+  gaugeNextCard: {fileID: 3208957561592027339}
+  gaugeNextBook: {fileID: 5639386737209021036}
 --- !u!1 &8703275789327420560
 GameObject:
   m_ObjectHideFlags: 0

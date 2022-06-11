@@ -12,14 +12,13 @@ public class GameManager : MonoBehaviour, model.Observer
     public CountDown globalCountDown;
     public CountDown nextCardCountDown;
     public CountDown nextBookCountDown;
-    public Gauge gauge;
+    public Gauge gaugeSummonCtulu;
+    public Gauge gaugeRelics;
     public model.Game game;
-    protected bool gameIsOver;
 
     private void Awake()
     {
         Instance = this;
-        gameIsOver = false;
         //boardPlayerB.canvasTextRelic.gameObject.SetActive(true);
         game = new model.Game();
         game.AddObserver(this);
@@ -38,14 +37,15 @@ public class GameManager : MonoBehaviour, model.Observer
         boardPlayerB.Init(game.Board(1));
         game.StartGame();
         StarterPickCard();
-        globalCountDown.Start(datasGame.durationSecondsGame);
+        globalCountDown.StartTimer(datasGame.durationSecondsGame);
+        nextCardCountDown.StartTimer(GameManager.Instance.datasGame.timeSecondsNextCard);
+        nextBookCountDown.StartTimer(GameManager.Instance.datasGame.timeSecondsNextBook);
     }
 
     void Update()
     {
-        if(game.IsOver() && !gameIsOver)
+        if(game.IsOver())
         {
-            gameIsOver = true;
             if(game.Winner() == game.GetBoard(true))
             {
                 UIManager.Instance.ShowWinnerPlayerA();
@@ -60,6 +60,35 @@ public class GameManager : MonoBehaviour, model.Observer
         else
         {
             game.IncrementTime(Time.deltaTime);
+            ProcessCountDowns();
+            UpdateGauges();
+        }
+    }
+
+    public void UpdateGauges()
+    {
+        gaugeSummonCtulu.SetValue(globalCountDown.normalizeValue);
+        foreach (var board in boards)
+        {
+            board.SetGaugeNextCard(nextCardCountDown.normalizeValue);
+            board.SetGaugeNextBook(nextBookCountDown.normalizeValue);
+        }
+    }
+
+    public void ProcessCountDowns()
+    {
+        if(nextCardCountDown.running)
+        {
+            foreach (var board in boards)
+            {
+                board.PickCard();
+                nextCardCountDown.StartTimer(GameManager.Instance.datasGame.timeSecondsNextCard);
+            }
+        }
+
+        if(nextBookCountDown.finish)
+        {
+            nextBookCountDown.StartTimer(datasGame.timeSecondsNextBook);
         }
     }
 
@@ -72,8 +101,8 @@ public class GameManager : MonoBehaviour, model.Observer
     {
         for (var i = 0; i < datasGame.numberCardStartGame; i++)
         {
-            boardPlayerA.PickCard(game.Board(0).PickCard());
-            boardPlayerB.PickCard(game.Board(1).PickCard());
+            boardPlayerA.PickCard();
+            boardPlayerB.PickCard();
         }
     }
 

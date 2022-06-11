@@ -11,7 +11,7 @@ public class PickCardEffect : EffectSO
     {
         if(card)
         {
-            card.Board.uHand.AppendCard(card.Board.deck.PickSpecificCard(specificCard));
+            card.Board.uHand.AppendCard(card.Board.deck.PickSpecificCard(card.card));
         }
         else
         {

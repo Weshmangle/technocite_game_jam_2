@@ -14,7 +14,9 @@ namespace model
 
     public enum TypeError
     {
-        HAND_FULL,
-        CARD_NOT_HAND
+        HAND_IS_FULL,
+        CARD_NOT_HAND,
+        DECK_IS_EMPTY,
+        INTERNAL_ERROR
     }
 }

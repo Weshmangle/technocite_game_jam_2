@@ -4,12 +4,16 @@ using UnityEngine;
 public class PickDeck : MonoBehaviour
 {
     public List<UCard> cards = new List<UCard>();
-    [SerializeField] public Gauge countDownNextCard;
-    [SerializeField] public Gauge countDownNextBook;
+    public model.Deck deck;
     [SerializeField] public GameObject empty;
 
     public UCard PickCardOnTop()
     {
+        return PickCard(0);
+    }
+
+    public UCard PickCard(int index)
+    {        
         if(cards.Count > 0)
         {
             UCard card = cards[0];
@@ -18,7 +22,7 @@ public class PickDeck : MonoBehaviour
         }
         else
         {
-            throw new System.Exception("Your deck is empty");
+            return null;
         }
     }
 
@@ -27,22 +31,10 @@ public class PickDeck : MonoBehaviour
         empty.SetActive(cards.Count == 0);
     }
 
-    public UCard PickSpecificCard(UPrototypeCard card)
+    public UCard PickSpecificCard(model.Card card)
     {
-        throw new System.Exception("PickSpecificCard Not Implemented");
-    }
-
-
-    public UCard PickCardRandom()
-    {
-        if(cards.Count == 0)
-        {
-            throw new System.Exception("Your deck is empty");
-        }
-        else
-        {
-            return cards[Random.Range(0, cards.Count)];
-        }
+        deck.PickSpecificCard(card);
+        return PickCard(0);
     }
 
     public void AddCard(UCard card)
@@ -51,18 +43,5 @@ public class PickDeck : MonoBehaviour
         card.transform.parent = transform;
         card.transform.localPosition = Vector3.zero;
         card.transform.Rotate(new Vector3(0, 0, 180));
-    }
-
-    public void AddCards(UCard[] collectionCards)
-    {
-        foreach (var card in collectionCards)
-        {
-            AddCard(card);
-        }
-    }
-
-    public bool isEmpty()
-    {
-        return cards.Count == 0;
     }
 }

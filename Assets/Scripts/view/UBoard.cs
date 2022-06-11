@@ -10,6 +10,18 @@ public class UBoard : MonoBehaviour, model.Observer
     public UHand uHand;
     public UGround ground;
     public UCard cardSelected;
+    [SerializeField] public Gauge gaugeNextCard;
+    [SerializeField] public Gauge gaugeNextBook;
+
+    public void SetGaugeNextCard(float value)
+    {
+        gaugeNextCard.SetValue(value);
+    }
+
+    public void SetGaugeNextBook(float value)
+    {
+        gaugeNextBook.SetValue(value);
+    }
 
    public void Init(model.Board board)
    {
@@ -30,29 +42,10 @@ public class UBoard : MonoBehaviour, model.Observer
             placeCardGround.board = this;
             placeCardGround.index = index;
         }
-        
-        // deck.countDownNextCard.SetTimeOut(GameManager.Instance.datasGame.numberCardStartGame);
-        // deck.countDownNextCard.StartCoundtDown();
-        // deck.countDownNextBook.SetTimeOut(GameManager.Instance.datasGame.timeSecondsNextBook);
-        // deck.countDownNextBook.StartCoundtDown();
    }
     
     void Update()
     {
-        if(GameManager.Instance.nextCardCountDown.finish)
-        {
-            if(!uHand.HandIsFull() && !deck.isEmpty())
-            {
-                PickCard(board.PickCard());
-            }
-            GameManager.Instance.nextCardCountDown.Start(GameManager.Instance.datasGame.numberCardStartGame);
-        }
-
-        if(GameManager.Instance.nextBookCountDown.finish)
-        {
-            GameManager.Instance.nextBookCountDown.Start(GameManager.Instance.datasGame.timeSecondsNextBook);
-        }
-
         MoveCardSelected();
         EnterGroundEmplacement();
     }
@@ -142,10 +135,10 @@ public class UBoard : MonoBehaviour, model.Observer
         cardSelected = null;*/
     }
 
-    public UCard PickCard(model.Card card)
+    public UCard PickCard()
     {
         UCard uCard = deck.PickCardOnTop();
-        uCard.card = card;
+        uCard.card = board.PickCard();
         uHand.AppendCard(uCard);
         return uCard;
     }

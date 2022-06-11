@@ -14,7 +14,7 @@ namespace model
         {
             if(cards.Count >= maxCardsHand)
             {
-                NotifyError(new {type = TypeError.HAND_FULL, args = new {TypeAction.ADD_CARD_HAND}});
+                NotifyError(new {type = TypeError.HAND_IS_FULL, args = new {TypeAction.ADD_CARD_HAND}});
             }
             else
             {

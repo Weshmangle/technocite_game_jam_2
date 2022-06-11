@@ -28,7 +28,7 @@ public class Gauge : MonoBehaviour
 
     public void SetValue(float value)
     {
-        slider.value = Mathf.Clamp(1 - value, 0, 1);
+        slider.value = Mathf.Clamp(value, 0, 1);
     }
 
     void Update()

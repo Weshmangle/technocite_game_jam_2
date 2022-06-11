@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 653628857732438814}
   - component: {fileID: 5431386669678672306}
   m_Layer: 0
-  m_Name: CountDownCtulu
+  m_Name: GaugeCtulu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

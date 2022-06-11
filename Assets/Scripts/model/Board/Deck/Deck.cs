@@ -3,7 +3,7 @@ using System;
 
 namespace model
 {    
-    public class Deck
+    public class Deck : Observable
     {
         #region PUBLIC
         public void FillDeck(Card[] cards)
@@ -73,11 +73,11 @@ namespace model
         {
             if(cards.Count == 0)
             {
-                throw new System.Exception("Deck is empty, you can't pick a CARD");
+                NotifyError(new {type = TypeError.DECK_IS_EMPTY, args = new {info = "Deck is empty, you can't pick a CARD"}});
             }
             else if(index < 0 || index > cards.Count)
             {
-                throw new System.Exception("Can't pick à Card Index in deck is out off bound");
+                NotifyError(new {type = TypeError.INTERNAL_ERROR, args = new {info = "Can't pick à Card Index in deck is out off bound"}});
             }
 
             return cards[index];

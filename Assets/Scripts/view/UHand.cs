@@ -39,11 +39,6 @@ public class UHand : MonoBehaviour, model.Observer
         hand.AddObserver(this);
     }
 
-    public bool HandIsFull()
-    {
-        return hand.HandIsFull();
-    }
-
     public void AppendCard(UCard card)
     {
         foreach (var emplacement in emplacements)
@@ -57,7 +52,6 @@ public class UHand : MonoBehaviour, model.Observer
                 return;
             }
         }
-        throw new System.Exception("Your hand is full, you can add card");
     }
 
     public void Discard(UCard card)
@@ -65,13 +59,13 @@ public class UHand : MonoBehaviour, model.Observer
         hand.RemoveCard(card.card);
     }
 
-    public void UpdateError(object args)
-    {
-        
-    }
-
     public void UpdateSuccess(object args)
     {
-        
+        Debug.LogWarning(args);
+    }
+
+    public void UpdateError(object args)
+    {
+        Debug.LogError(args);
     }
 }
